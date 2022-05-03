@@ -1,6 +1,9 @@
+#include <string>
+
 class	Contact
 {
 	public:
+
 	Contact();
 	
 	private:

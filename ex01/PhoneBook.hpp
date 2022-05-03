@@ -1,4 +1,8 @@
-#include <iostream>
+#ifndef PHONEBOOK_H
+# define PHONEBOOK_H
+
+# include <iostream>
+# include "Contact.hpp"
 
 class	PhoneBook
 {
@@ -10,5 +14,7 @@ class	PhoneBook
 
 
 	private:
-	Contact Contacts[8];
+	Contact _contacts[8];
 };
+
+#endif
