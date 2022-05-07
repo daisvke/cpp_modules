@@ -6,7 +6,7 @@ NAME				=	megaphone
 
 CC					=	clang++
 CFLAGS				=	-Wall -Werror -Wextra -std=c++98
-
+INC					=	-I inc/
 
 #######################################
 #				F I L E S			  #
@@ -14,8 +14,10 @@ CFLAGS				=	-Wall -Werror -Wextra -std=c++98
 
 #		S O U R C E  F I L E S		  #
 
-SRC_DIR				=	./
-SRC_FILES			=	megaphone.cpp
+SRC_DIR				=	src/
+SRC_FILES			=	Contact.cpp \
+						main.cpp \
+						PhoneBook.cpp
 SRC					=	$(addprefix $(SRC_DIR), $(SRC_FILES))
 
 
@@ -39,7 +41,7 @@ $(NAME): $(OBJ)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.cpp
 	mkdir -p $(OBJ_DIR)
-	$(CC) $(C_FLAGS) -o $@ -c $<
+	$(CC) $(INC) $(C_FLAGS) -o $@ -c $<
 
 
 # C L E A N  &  O T H E R  R U L E S  #
