@@ -1,6 +1,16 @@
 #ifndef PHONEBOOK_H
 # define PHONEBOOK_H
 
+# include <iostream>
+# include <string>
+# include "Contact.hpp"
+
+# define FIRSTNAME	0
+# define LASTNAME	1
+# define NICKNAME	2
+
+# define MAX_CONTACT_NBR	8
+
 class	PhoneBook
 {
 	public:

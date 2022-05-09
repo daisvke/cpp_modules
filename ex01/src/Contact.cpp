@@ -1,4 +1,4 @@
-#include "main.hpp"
+#include "Contact.hpp"
 
 Contact::Contact()
 {
@@ -11,12 +11,6 @@ void	Contact::show_field(int i) const
 
 std::string	Contact::get_field(int i) const
 {
-	/*
-	size_t	size = _fields[i].length();
-	char	converted[size + 1];
-
-	strcpy(converted, _fields[i].c_str());
-	return ((char *)converted);*/
 	return (_fields[i]);
 }
 

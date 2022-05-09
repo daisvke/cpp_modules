@@ -1,6 +1,11 @@
 #ifndef CONTACT_H
 # define CONTACT_H
 
+# include <iostream>
+# include <string>
+
+# define FIELD_NBR			5
+
 class	Contact
 {
 	public:
