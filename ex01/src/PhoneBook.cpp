@@ -72,6 +72,13 @@ void	PhoneBook::show_contact(int id) const
 	}
 }
 
+std::string	ft_truncate_and_replace(std::string str)
+{
+	if (str.length() > 10)
+		str[9] = '.';
+	return (str.substr(0, 10));
+}
+
 void	PhoneBook::show(void) const
 {
 	size_t		size;
@@ -89,10 +96,10 @@ void	PhoneBook::show(void) const
 	for (int i=0; i < size; ++i)
 	{
 
-		firstname = _contacts[i].get_field(FIRSTNAME);
-		lastname = _contacts[i].get_field(LASTNAME);
+		firstname = ft_truncate_and_replace(_contacts[i].get_field(FIRSTNAME));
+		lastname = ft_truncate_and_replace(_contacts[i].get_field(LASTNAME));
 		nickname = _contacts[i].get_field(NICKNAME);
-		printf("|%10d|%.10s|%.10s|%.10s|\n", \
+		printf("|%10d|%10s|%10s|%10s|\n", \
 			i, firstname.c_str(), lastname.c_str(), nickname.c_str());
 		std::cout << std::string(45, '-') << std::endl;
 	}
