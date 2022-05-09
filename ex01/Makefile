@@ -15,7 +15,8 @@ INC					=	-I inc/
 #		S O U R C E  F I L E S		  #
 
 SRC_DIR				=	src/
-SRC_FILES			=	Contact.cpp \
+SRC_FILES			=	ascii_art.cpp \
+						Contact.cpp \
 						main.cpp \
 						PhoneBook.cpp
 SRC					=	$(addprefix $(SRC_DIR), $(SRC_FILES))

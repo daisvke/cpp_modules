@@ -1,23 +1,23 @@
 #ifndef PHONEBOOK_H
 # define PHONEBOOK_H
 
-# include <iostream>
-# include "Contact.hpp"
-
 class	PhoneBook
 {
 	public:
 	
 	PhoneBook();
-	void	add(Contact contact);
-	size_t	get_contact_nbr() const;
-	void	show() const;
+	size_t	get_contact_nbr(void) const;
+	void	add(void);
+	void	search(void) const;
+	void	show_contact(int id) const;
+	void	show(void) const;
 	~PhoneBook();
 
 
 	private:
+
 	size_t	_contactNbr;
-	Contact _contacts[8];
+	Contact _contacts[MAX_CONTACT_NBR];
 };
 
 #endif

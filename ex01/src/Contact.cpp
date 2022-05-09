@@ -1,17 +1,22 @@
-#include "Contact.hpp"
+#include "main.hpp"
 
 Contact::Contact()
 {
 }
 
-Contact::Contact(std::string name)
+void	Contact::show_field(int i) const
 {
-	_name = name;
+	std::cout << _fields[i];
 }
 
-std::string	Contact::show_name() const
+void	Contact::add_field(int i, std::string input)
 {
-	return (_name);
+	_fields[i] = input;
+}
+
+void	Contact::show_field_name(int i) const
+{
+	std::cout << _field_names[i];
 }
 
 Contact::~Contact()
