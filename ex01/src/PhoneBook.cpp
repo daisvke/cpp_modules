@@ -40,6 +40,7 @@ void	PhoneBook::search(void) const
 	size_t	size;
 	size_t	max;
 
+	show();
 	std::cout << "Enter index: " << std::endl;
 	std::cin >> index;
 	
@@ -60,9 +61,12 @@ void	PhoneBook::show_contact(int id) const
 {
 	size_t	size;
 
+	std::cout << std::endl;
 	size = get_contact_nbr();
 	for (int i=0; i < FIELD_NBR; ++i)
 	{
+		_contacts[i].show_field_name(i);
+		std::cout << ": ";
 		_contacts[id].show_field(i);
 		std::cout << std::endl;
 	}
@@ -70,18 +74,27 @@ void	PhoneBook::show_contact(int id) const
 
 void	PhoneBook::show(void) const
 {
-	size_t	size;
+	size_t		size;
+	std::string	firstname;
+	std::string	lastname;
+	std::string	nickname;
 
 	size = get_contact_nbr();
 
+	std::cout << std::string(45, '=') << std::endl;
+	printf("|%10s|%10s|%10s|%10s|\n", \
+		"index", "first name", "last name", "nickname");
+	std::cout << std::string(45, '=') << std::endl;
+
 	for (int i=0; i < size; ++i)
 	{
-		for (int j=0; j < FIELD_NBR; ++j)
-		{
-			_contacts[i].show_field(j);
-			std::cout << std::endl;
-		}
-		std::cout << "==============================" << std::endl;
+
+		firstname = _contacts[i].get_field(FIRSTNAME);
+		lastname = _contacts[i].get_field(LASTNAME);
+		nickname = _contacts[i].get_field(NICKNAME);
+		printf("|%10d|%.10s|%.10s|%.10s|\n", \
+			i, firstname.c_str(), lastname.c_str(), nickname.c_str());
+		std::cout << std::string(45, '-') << std::endl;
 	}
 }
 

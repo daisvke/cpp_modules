@@ -6,9 +6,10 @@ class	Contact
 	public:
 
 	Contact();
-	void	show_field(int i) const;
-	void	add_field(int i, std::string input);
-	void	show_field_name(int i) const;
+	void		show_field(int i) const;
+	std::string	get_field(int i) const;
+	void		add_field(int i, std::string input);
+	void		show_field_name(int i) const;
 	~Contact();
 	
 	

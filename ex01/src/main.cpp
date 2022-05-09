@@ -20,6 +20,5 @@ int	main(void)
 		else if (command.compare("END") == 0)
 			break ;
 	}
-	PhoneBook.show();
 	return (0);
 }

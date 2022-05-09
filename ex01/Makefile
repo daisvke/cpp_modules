@@ -1,6 +1,6 @@
 #	 E X E C U T A B L E  N A M E	 #
 
-NAME				=	megaphone
+NAME				=	phonebook
 
 #			C C  F L A G S			  #
 
