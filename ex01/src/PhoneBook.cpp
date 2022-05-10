@@ -45,6 +45,12 @@ void	PhoneBook::search(void) const
 	show();
 	std::cout << "Enter index: " << std::endl;
 	std::cin >> index;
+	if (std::cin.fail())
+	{
+		std::cout << "Please enter a correct number" << std::endl;
+		std::cin.clear();
+		return;
+	}
 
 	size = get_contact_nbr();
 	if (size == 0)
