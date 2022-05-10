@@ -5,7 +5,7 @@ int	main(void)
 	PhoneBook	PhoneBook;
 	std::string	command;
 	std::string	name;
-	
+
 	ft_print_ascii_art();
 	while (1)
 	{

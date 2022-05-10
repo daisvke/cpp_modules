@@ -9,7 +9,7 @@
 # define LASTNAME	1
 # define NICKNAME	2
 
-# define MAX_CONTACT_NBR	8
+# define MAX_CONTACT_NBR	2
 
 class	PhoneBook
 {
