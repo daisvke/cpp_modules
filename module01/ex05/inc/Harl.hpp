@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 05:25:59 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/13 19:56:25 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/05/13 20:15:42 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ class Harl
 {
 	public:
 
-	void complain( std::string level );
+	void	complain( std::string level );
 
 
 	private:
