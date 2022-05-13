@@ -1,39 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Replace.hpp                                        :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/13 01:53:40 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/13 05:19:23 by dtanigaw         ###   ########.fr       */
+/*   Created: 2022/05/13 05:25:59 by dtanigaw          #+#    #+#             */
+/*   Updated: 2022/05/13 05:36:54 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef REPLACE_HPP
-# define REPLACE_HPP
+#ifndef HARL_H
+# define HARL_H
 
 # include <iostream>
-# include <fstream>
 
-# define ERROR	0
-
-class Replace
+class Harl
 {
 	public:
 
-	Replace();
-	bool	openInFile(std::string fileName);
-	bool	replace(std::string toReplace, std::string replaceWith);
-	void	putToOutFile(std::string fileContent);
+	void complain( std::string level );
 
 
 	private:
 
-	std::string		_fileName;
-	std::ifstream	_inStream;
-	std::string		_toReplace;
-	std::string		_replaceWith;
+	void	debug( void );
+	void	info( void );
+	void	warning( void );
+	void	error( void );
 };
 
 #endif
