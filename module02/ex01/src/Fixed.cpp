@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 23:38:03 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/16 04:38:28 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/05/16 04:46:00 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,8 @@ Fixed::~Fixed()
 	return;
 }
 
-std::ostream &operator<<( std::ostream & ostr, Fixed const & instance)
+std::ostream &operator<<( std::ostream &os, Fixed const &nbr)
 {
-	ostr << instance.toFloat();
-	return (ostr);
+	os << nbr.toFloat();
+	return (os);
 }

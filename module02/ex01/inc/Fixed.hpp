@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 23:31:57 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/16 04:12:23 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/05/16 04:46:00 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,6 @@ class	Fixed
 	static const int	_fractionalBits = 8;
 };
 
-std::ostream	&operator<<( std::ostream &ostream, const Fixed &myClass );
+std::ostream &operator<<( std::ostream &os, Fixed const &nbr);
 
 #endif
