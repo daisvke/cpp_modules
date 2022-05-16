@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 23:31:57 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/16 03:53:34 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/05/16 04:12:23 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,21 @@
 # define FIXED_HPP
 
 # include <iostream>
+# include <cmath>
 
 class	Fixed
 {
 	public:
 
 	Fixed();
+	Fixed( const int nbr);
+	Fixed( const float nbr );
 	Fixed( const Fixed &obj );
 	Fixed		&operator=( const Fixed &obj );
 	int			getRawBits( void ) const;
 	void		setRawBits( const int raw );
+	float		toFloat( void ) const;
+	int			toInt( void ) const;
 	~Fixed();
 	
 
@@ -32,5 +37,7 @@ class	Fixed
 	int					_fixedPointNbr;
 	static const int	_fractionalBits = 8;
 };
+
+std::ostream	&operator<<( std::ostream &ostream, const Fixed &myClass );
 
 #endif
