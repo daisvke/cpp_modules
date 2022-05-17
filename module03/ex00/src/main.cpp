@@ -6,10 +6,19 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 07:00:31 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/17 07:01:43 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/05/17 10:21:42 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
+int	main(void)
+{
+	ClapTrap	a("A"), b("B");
 
+	a.attack("b");
+	b.takeDamage(3);
+	b.beRepaired(2);
+
+	return 0;
+}

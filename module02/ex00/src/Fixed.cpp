@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 23:38:03 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/16 02:10:45 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/05/17 10:27:02 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,12 @@
 Fixed::Fixed(): _fixedPointNbr(0)
 {
 	std::cout << "Default constructor called" << std::endl;
-	return;
 }
 
 Fixed::Fixed( const Fixed &obj )
 {
 	std::cout << "Copy constructor called" << std::endl;
 	*this = obj;
-	return;
 }
 
 Fixed &	Fixed::operator=( const Fixed &obj )
@@ -47,5 +45,4 @@ void	Fixed::setRawBits( const int raw )
 Fixed::~Fixed()
 {
 	std::cout << "Destructor called" << std::endl;
-	return;
 }

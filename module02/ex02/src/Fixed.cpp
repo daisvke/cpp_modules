@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 21:25:57 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/17 05:10:38 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/05/17 10:28:03 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ Fixed::Fixed( const float nbr )
 Fixed::Fixed( const Fixed &obj )
 {
 	*this = obj;
-	return;
 }
 
 Fixed &	Fixed::operator=( const Fixed &obj )
