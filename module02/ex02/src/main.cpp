@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 23:30:21 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/17 04:40:03 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/05/17 05:09:39 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int main( void )
 	Fixed	res;
 	std::cout << "c: ";
 	std::cout << c << std::endl;
-	a = 30;
+	a = -30;
 	std::cout << "a: ";
 	std::cout << a << std::endl;
 	std::cout << "a + c: ";
@@ -48,6 +48,19 @@ int main( void )
 
 	std::cout << "max a, b: ";
 	std::cout << Fixed::max( a, b ) << std::endl;
+	
+	Fixed	old(a);
+	std::cout << "a: ";
+	std::cout << a << std::endl;
+	if (a > old)
+		std::cout << "is sup" << std::endl;
+	else
+		std::cout << "is not sup" << std::endl;
+	a = old;
+	if (++a > old)
+		std::cout << "is sup" << std::endl;
+	else
+		std::cout << "is not sup" << std::endl;
 
 	return 0;
 }

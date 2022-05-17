@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 21:25:57 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/17 04:11:30 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/05/17 05:10:38 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,34 +123,22 @@ Fixed	Fixed::operator--( int )
 
 Fixed	&Fixed::min( Fixed &left, Fixed &right )
 {
-	if (left < right)
-		return (left);
-	else
-		return (right);
+	return (left < right ? left : right);
 }
 
 const Fixed	&Fixed::min( const Fixed &left, const Fixed &right )
 {
-	if (left < right)
-		return (left);
-	else
-		return (right);
+	return (left < right ? left : right);
 }
 
 Fixed	&Fixed::max( Fixed &left, Fixed &right )
 {
-	if (left > right)
-		return (left);
-	else
-		return (right);
+	return (left > right ? left : right);
 }
 
 const Fixed	&Fixed::max( const Fixed &left, const Fixed &right )
 {
-	if (left > right)
-		return (left);
-	else
-		return (right);
+	return (left > right ? left : right);
 }
 
 int	Fixed::getRawBits( void ) const
