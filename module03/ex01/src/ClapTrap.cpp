@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 07:03:43 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/18 00:42:16 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/05/18 00:48:23 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,26 @@ ClapTrap::ClapTrap()
 {
 }
 
-ClapTrap::ClapTrap( const std::string name ): _name(name), _hitPoints(10),
+ClapTrap::ClapTrap(const std::string name): _name(name), _hitPoints(10),
 	_energyPoints(10), _attackDamage(0)
 {
 	std::cout << "Name constructor called" << std::endl;
 }
 
-ClapTrap::ClapTrap( ClapTrap const &obj )
+ClapTrap::ClapTrap(ClapTrap const &obj)
 {
 	std::cout << "Copy constructor called" << std::endl;
 	*this = obj;
 }
 
-ClapTrap	&ClapTrap::operator=( const ClapTrap &obj )
+ClapTrap	&ClapTrap::operator=(const ClapTrap &obj)
 {
 	return *this;
 }
 
-void	ClapTrap::attack( const std::string &target )
+void	ClapTrap::attack(const std::string &target)
 {
-	if (_hitPoints > 0 &&_energyPoints > 0)
+	if (_hitPoints > 0 && _energyPoints > 0)
 	{
 		--_energyPoints;
 		std::cout << "ClapTrap " << _name << " attacks " << target
@@ -50,7 +50,7 @@ void	ClapTrap::attack( const std::string &target )
 			<< std::endl;
 }
 
-void	ClapTrap::takeDamage( unsigned int amount )
+void	ClapTrap::takeDamage(unsigned int amount)
 {
 	if (_hitPoints > 0)
 	{
@@ -59,7 +59,10 @@ void	ClapTrap::takeDamage( unsigned int amount )
 			<< amount << " points of damage!"
 			<< std::endl;
 		if (_hitPoints <= 0)
+		{
+			_hitPoints = 0;
 			std::cout << _name << " is dead!" << std::endl;
+		}
 		else
 			std::cout << _name << " has " << _hitPoints << " hit points left!"
 				<< std::endl;
@@ -68,7 +71,7 @@ void	ClapTrap::takeDamage( unsigned int amount )
 		std::cout << _name << " is already dead!" << std::endl;
 }
 
-void	ClapTrap::beRepaired( unsigned int amount )
+void	ClapTrap::beRepaired(unsigned int amount)
 {
 	if (_energyPoints > 0)
 	{

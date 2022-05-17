@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 21:25:57 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/17 10:28:03 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/05/17 23:06:27 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ Fixed::Fixed( const Fixed &obj )
 
 Fixed &	Fixed::operator=( const Fixed &obj )
 {
-	_fixedPointNbr = obj._fixedPointNbr;
+	if (this != &obj)
+		_fixedPointNbr = obj._fixedPointNbr;
 	return *this;
 }
 
