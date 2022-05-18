@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/18 06:09:34 by dtanigaw          #+#    #+#             */
+/*   Updated: 2022/05/18 06:13:17 by dtanigaw         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
 
 int	main(int argc, char **argv)
@@ -6,7 +18,7 @@ int	main(int argc, char **argv)
 		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
 	else
 	{
-		for (int i = 1; i < argc; ++i)
+		for (int i=1; i < argc; ++i)
 		{
 			while (*argv[i])
 			{
@@ -22,5 +34,6 @@ int	main(int argc, char **argv)
 		}
 	}
 	std::cout << std::endl;
+
 	return (0);
 }
