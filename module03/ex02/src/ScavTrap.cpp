@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 23:33:09 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/18 01:41:02 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/05/18 05:58:33 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ ScavTrap::ScavTrap(const std::string name): ClapTrap(name)
 	std::cout << "ScavTrap: Name constructor called" << std::endl;
 }
 
-ScavTrap::ScavTrap(ScavTrap const &obj)
+ScavTrap::ScavTrap(ScavTrap const &obj, const std::string name): ClapTrap(name)
 {
 	std::cout << "ScavTrap: Copy constructor called" << std::endl;
 	*this = obj;

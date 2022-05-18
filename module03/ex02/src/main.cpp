@@ -6,42 +6,44 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 07:00:31 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/18 01:43:05 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/05/18 06:01:57 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 int	main(void)
 {
-	ClapTrap	a("A"), b("B");
-	ScavTrap	s("S"), t("T");
-
-	a.attack("b");
-	b.takeDamage(3);
-	b.beRepaired(2);
+	ClapTrap	c("C");
+	std::cout << std::endl;
+	ScavTrap	s("S");
+	std::cout << std::endl;
+	FragTrap	f("F");
 
 	std::cout << std::endl;
 
-	s.attack("b");
-	b.takeDamage(20);
+	c.attack("F");
+	f.takeDamage(c.getAttackDamage());
+	f.beRepaired(3);
+
+	std::cout << std::endl;
+
+	s.attack("C");
+	c.takeDamage(s.getAttackDamage());
 
 	std::cout << std::endl;
 	
-	b.attack("s");
+	f.highFivesGuys();
 	s.guardGate();
 
 	std::cout << std::endl;
 
-	t.attack("s");
-	t.takeDamage(200);
-	t.beRepaired(100);
-
-	std::cout << std::endl;
-	
-	s = t;
-	s.takeDamage(10);
+	ClapTrap	x(f, "X");
+	s.attack("X");
+	x.takeDamage(s.getAttackDamage());
+	x.beRepaired(100);
 
 	return 0;
 }
