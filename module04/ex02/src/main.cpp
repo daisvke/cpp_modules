@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 23:05:31 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/19 21:28:38 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/05/19 22:06:12 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,9 @@ int main()
 	std::cout << animals[3]->getBrain()->_ideas[30] << std::endl;
 	std::cout << animals[3]->getType() << std::endl;
 	std::cout << std::endl;
+
+	// Try to create an Animal
+	Animal a;
 
 	// Free array
 	for (int i=0; i < 4; ++i)
