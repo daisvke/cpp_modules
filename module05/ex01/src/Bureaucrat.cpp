@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 23:37:44 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/20 05:13:48 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/05/20 05:18:06 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,10 @@ void	Bureaucrat::decremGrade(void)
 void	Bureaucrat::signForm(Form &form)
 {
 	try {form.beSigned(*this)}
-	catch (std::exception &e)
+	catch (std::string const &errMessage)
 	{
 		cerr << Bureaucrat.getName() << " couldn't sign " << Form.getName()
-			<< " form because "
+			<< " form because " << errMessage << std::endl;
 	}
 }
 
