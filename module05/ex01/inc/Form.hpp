@@ -6,16 +6,18 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 03:12:37 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/20 05:10:10 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/05/20 05:53:36 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FORM_H
-#define FORM_H
+# define FORM_H
 
 # include <iostream>
 # include <stdexcept>
 # include "Bureaucrat.hpp"
+
+class Bureaucrat;
 
 class	Form
 {
@@ -65,9 +67,9 @@ class	Form
 	const std::string	_name;
 	static const size_t	_minGrade = 150;
 	static const size_t	_maxGrade = 1;
-	bool				isSigned;
-	const size_t		requiredGradeToSign;
-	const size_t		requiredGradeToExecute;
+	bool				_isSigned;
+	const size_t		_requiredGradeToSign;
+	const size_t		_requiredGradeToExecute;
 	
 };
 

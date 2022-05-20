@@ -6,15 +6,18 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 23:37:45 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/20 05:13:48 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/05/20 05:52:59 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUREAUCRAT_H
-#define BUREAUCRAT_H
+# define BUREAUCRAT_H
 
 # include <iostream>
 # include <stdexcept>
+# include "Form.hpp"
+
+class Form;
 
 class	Bureaucrat
 {

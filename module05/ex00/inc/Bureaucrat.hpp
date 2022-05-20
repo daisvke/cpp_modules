@@ -6,12 +6,12 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 23:37:45 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/20 03:00:01 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/05/20 05:49:26 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUREAUCRAT_H
-#define BUREAUCRAT_H
+# define BUREAUCRAT_H
 
 # include <iostream>
 # include <stdexcept>

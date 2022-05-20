@@ -6,11 +6,12 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 23:37:42 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/20 03:09:36 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/05/20 05:46:22 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int	main(void)
 {

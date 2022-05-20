@@ -6,30 +6,28 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 04:40:05 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/20 05:10:10 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/05/20 06:02:19 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 
 Form::Form(): _name(""), _requiredGradeToSign(_minGrade),
-	_requiredGradeToExecute_isSigned(_minGrade)
+	_requiredGradeToExecute(_minGrade), _isSigned(false)
 {
 	std::cout << "Form: Default constructor called" << std::endl;
 }
 
-Form(const std::string name, const size_t requiredGradeToSign,
-	const size_t requiredGradeToExecute)
+Form::Form(const std::string name, const size_t requiredGradeToSign,
+	const size_t requiredGradeToExecute): _name(name), _isSigned(false),
+	_requiredGradeToSign(requiredGradeToSign), _requiredGradeToExecute(requiredGradeToExecute)
 {
 	std::cout << "Form: Parameterized constructor called" << std::endl;
-	_name = name;
-	_isSigned = false;
-	_requiredGradeToSign = requiredGradeToSign;
-	_requiredGradeToExecute = requiredGradeToExecute;
 	checkGrade();
 }
 
-Form::Form(const Form &obj)
+Form::Form(const Form &obj): _name(obj._name), _isSigned(obj._isSigned),
+	_requiredGradeToSign(obj._requiredGradeToSign), _requiredGradeToExecute(obj._requiredGradeToExecute)
 {
 	std::cout << "Form: Copy constructor called" << std::endl;
 	*this = obj;
@@ -53,12 +51,12 @@ std::string	Form::getName(void) const
 
 size_t	Form::getRequiredGradeToSign(void) const
 {
-	return requiredGradeToSign;
+	return _requiredGradeToSign;
 }
 	
 size_t	Form::getRequiredGradeToExecute(void) const
 {
-	return requiredGradeToExecute;
+	return _requiredGradeToExecute;
 }
 
 bool	Form::getStatus(void) const
@@ -76,9 +74,9 @@ void	Form::checkGrade(void) const
 		throw (GradeTooHighException());
 }
 
-void	beSigned(const Bureaucrat &obj)
+void	Form::beSigned(const Bureaucrat &obj)
 {
-	size_t	grade = Bureaucrat.getGrade();
+	size_t	grade = obj.getGrade();
 
 	if (grade <= _maxGrade)
 		_isSigned = true;
