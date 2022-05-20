@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 23:37:44 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/20 05:52:35 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/05/20 20:44:50 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ void	Bureaucrat::signForm(Form &form)
 		std::cerr << getName() << " couldn't sign " << form.getName()
 			<< " form because " << errMessage << std::endl;
 	}
+	std::cerr << getName() << " signed " << form.getName()
+		<< " form " << std::endl;
 }
 
 std::ostream	&operator<<(std::ostream &stream, const Bureaucrat &obj)

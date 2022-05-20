@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 03:12:37 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/20 05:53:36 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/05/20 20:41:38 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ class	Form
 		GradeTooLowException() throw() {}
 		virtual const char	* what() const throw()
 		{
-			return "The grade is too low!";
+			return "Form: The grade is too low!";
 		}
 		virtual ~GradeTooLowException() throw() {}
 	};

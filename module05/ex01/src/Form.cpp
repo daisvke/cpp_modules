@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 04:40:05 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/20 06:02:19 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/05/20 20:46:43 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ Form::Form(): _name(""), _requiredGradeToSign(_minGrade),
 	_requiredGradeToExecute(_minGrade), _isSigned(false)
 {
 	std::cout << "Form: Default constructor called" << std::endl;
+	checkGrade();
 }
 
 Form::Form(const std::string name, const size_t requiredGradeToSign,
@@ -78,7 +79,7 @@ void	Form::beSigned(const Bureaucrat &obj)
 {
 	size_t	grade = obj.getGrade();
 
-	if (grade <= _maxGrade)
+	if (grade <= _requiredGradeToSign)
 		_isSigned = true;
 	else
 		throw (GradeTooLowException());
