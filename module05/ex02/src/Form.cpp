@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 04:40:05 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/21 01:54:04 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/05/21 22:31:19 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	Form::checkGrade(void) const
 void	Form::beSigned(const Bureaucrat &obj)
 {
 	size_t	grade = obj.getGrade();
-
+	
 	if (grade <= _requiredGradeToSign)
 		_isSigned = true;
 	else

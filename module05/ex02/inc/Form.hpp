@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 03:12:37 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/21 01:54:04 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/05/21 22:26:02 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ class	Form
 		GradeTooHighException() throw() {}
 		virtual const char	*what() const throw()
 		{
-			return "The grade is too high!";
+			return "Form: The grade is too high!";
 		}
 		virtual ~GradeTooHighException() throw() {}
 	};

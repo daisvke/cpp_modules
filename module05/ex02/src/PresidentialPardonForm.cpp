@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 22:25:00 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/21 07:21:57 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/05/21 22:24:59 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,6 @@ const std::string	&PresidentialPardonForm::getTarget(void) const
 
 void	PresidentialPardonForm::execute(const Bureaucrat &executor) const
 {
+	checkIfExecutable(executor);
 	std::cout << _target << " has been pardoned by Zaphod Beeblebrox" << std::endl;
 }

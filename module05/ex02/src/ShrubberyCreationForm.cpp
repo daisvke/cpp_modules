@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 22:24:56 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/21 07:11:05 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/05/21 22:36:56 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	ShrubberyCreationForm::execute(const Bureaucrat &executor) const
 
 	outfile.open(fileName.c_str(), std::ios::out);
 
-	size_t	size = 31;
+	size_t	size = 25;
 	size_t	space = size / 2;
 	
 	for (size_t i(1); i < size; ++i)
@@ -69,14 +69,16 @@ void	ShrubberyCreationForm::execute(const Bureaucrat &executor) const
 	}
 
 	size_t	trunk = (size * 10) / 100;
+	trunk = trunk % 2 == 0 ? ++trunk : trunk;
+	space = (size / 2) - (trunk / 2);
+
 	for (size_t i(0); i < trunk; ++i)
 	{
-		outfile << std::string(((size / 2) - 2 * (trunk / 2)) - 1, ' ');
-		outfile << std::string(trunk * 2, '=') << std::endl;
+		outfile << std::string(space, ' ');
+		outfile << std::string(trunk, '=') << std::endl;
 	}
 
 	outfile.close();
 
-	std::cout << "Generated " << _target << "_shrubbery file!"
-		<< std::endl;
+	std::cout << "Generated " << _target << "_shrubbery file!" << std::endl;
 }
