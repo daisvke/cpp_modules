@@ -6,11 +6,10 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 22:24:56 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/21 04:30:39 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/05/21 07:11:05 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fstream>
 #include "ShrubberyCreationForm.hpp"
 
 ShrubberyCreationForm::ShrubberyCreationForm()
@@ -78,6 +77,6 @@ void	ShrubberyCreationForm::execute(const Bureaucrat &executor) const
 
 	outfile.close();
 
-	std::cout << "Created the shrug in " << _target << "_shrubbery"
+	std::cout << "Generated " << _target << "_shrubbery file!"
 		<< std::endl;
 }
