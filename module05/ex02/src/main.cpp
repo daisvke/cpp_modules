@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 23:37:42 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/21 07:23:25 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/05/21 07:28:09 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ int	main(void)
 {
 	Bureaucrat	a("A", 144);
 	ShrubberyCreationForm	scf("mytarget");
-	
+	RobotomyRequestForm	rrf(a.getName());
+
+	// ShrubberyCreationForm
+
 	try {a.signForm(scf);}
 	catch (std::exception &e)
 	{
@@ -41,5 +44,18 @@ int	main(void)
 		std::cout << "A couldn't execute form: " << e.what() << std::endl;
 	}
 
+	// RobotomyRequestForm
+
+	try {a.signForm(rrf);}
+	catch (std::exception &e)
+	{
+		std::cout << "A couldn't sign form: " << e.what() << std::endl;
+	}
+	
+	try {a.executeForm(rrf);}
+	catch (std::exception &e)
+	{
+		std::cout << "A couldn't execute form: " << e.what() << std::endl;
+	}
 	return 0;
 }
