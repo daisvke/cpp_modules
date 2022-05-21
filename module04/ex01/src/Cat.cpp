@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 23:10:22 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/19 21:26:52 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/05/20 22:17:17 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,5 @@ Cat::~Cat()
 {
 	std::cout << "Cat: Destructor called" << std::endl;
 	delete _brain;
+	_brain = 0;
 }

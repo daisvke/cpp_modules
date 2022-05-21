@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 23:05:31 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/19 00:40:03 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/05/20 21:14:19 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,11 @@ int main()
 	std::cout << std::endl;
 
 	delete meta;
+	meta = 0;
 	delete j;
+	j = 0;
 	delete i;
+	i = 0;
 
 	std::cout << std::endl;
 	std::cout << "============ WRONG ANIMAL ============" << std::endl; 
@@ -58,7 +61,9 @@ int main()
 	std::cout << std::endl;
 
 	delete Wmeta;
+	Wmeta = 0;
 	delete c;
+	c = 0;
 
 	return 0;
 }

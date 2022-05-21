@@ -6,11 +6,12 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 06:09:34 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/18 06:13:17 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/05/20 23:13:16 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <cctype>
 
 int	main(int argc, char **argv)
 {
@@ -22,9 +23,9 @@ int	main(int argc, char **argv)
 		{
 			while (*argv[i])
 			{
-				if (*argv[i] >= 'a' && *argv[i] <= 'z')
+				if (isalpha(*argv[i]))
 				{
-					char	c = *argv[i] - 32;
+					char	c = toupper(*argv[i]);
 					std::cout << c;
 				}
 				else if (*argv[i] != '"')
