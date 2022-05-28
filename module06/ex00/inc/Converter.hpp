@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 23:31:36 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/28 21:33:53 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/05/28 21:45:37 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ class	Converter
 	void	detectError(void) const;
 	void	convert(char *src);
 	void	fromChar(char *src);
+	void	fromInt(char *src);
 	void	printResult(Converter res, std::string const &src) const;
 
 

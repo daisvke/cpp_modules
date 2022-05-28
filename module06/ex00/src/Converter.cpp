@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 23:31:18 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/28 21:41:58 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/05/28 22:00:42 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,22 @@ void	Converter::fromChar(char *src)
 	_toDouble = (double)src[0];
 }
 
+void	Converter::fromInt(char *src)
+{
+	double	toDbl = atoi(src);
+
+	_toChar = (toDbl >= 'a' && toDbl <= 'z') || (toDbl >= 'A' && toDbl <= 'Z') ? static_cast<char>(toDbl) : 0;
+	_toInt = atoi(src);
+	_toFloat = _toInt;
+	_toDouble = _toInt;
+}
+
 void	Converter::convert(char *src)
 {
 	if (_srcType == _char)
 		fromChar(src);
+	if (_srcType == _int)
+		fromInt(src);
 }
 
 void	Converter::printResult(Converter res, std::string const &src) const
@@ -95,7 +107,9 @@ void	Converter::printResult(Converter res, std::string const &src) const
 
 	dotZero = src.find('.') != std::string::npos
 		|| _srcType == _double || _srcType == _float;
-	std::cout << "char: " << _toChar << std::endl;
+	std::cout << "char: ";
+	_toChar == 0 ? std::cout << "Non displayable" : std::cout << _toChar;
+	std::cout << std::endl;
 	std::cout << "int: " << _toInt << std::endl;
 	std::cout << "float: " << _toFloat << (dotZero ? "" : ".0") << "f" << std::endl;
 	std::cout << "double: " << _toDouble << (dotZero ? "" : ".0") << std::endl;}
