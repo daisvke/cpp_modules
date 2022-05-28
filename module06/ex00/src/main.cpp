@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 23:31:21 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/26 07:41:54 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/05/28 21:21:08 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ int	main(int argc, char *argv[])
 
 		convert.detectType(argv[1]);
 		convert.detectError();
-		printResult(convert);
+		convert.convert(argv[1]);
+		convert.printResult(convert, argv[1]);
 		return 0;
 	}
 	

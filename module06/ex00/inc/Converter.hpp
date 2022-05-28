@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 23:31:36 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/26 07:41:34 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/05/28 21:33:53 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define CONVERTER_H
 
 # include <iostream>
+# include <string>
+# include <cmath>
 
 class	Converter
 {
@@ -26,9 +28,9 @@ class	Converter
 
 	void	detectType(std::string src);
 	void	detectError(void) const;
-	void	convert(std::string src);
-	void	fromChar(std::string src);
-	void	printResult(Converter res) const;
+	void	convert(char *src);
+	void	fromChar(char *src);
+	void	printResult(Converter res, std::string const &src) const;
 
 
 	private:
