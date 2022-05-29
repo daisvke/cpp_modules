@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 23:31:18 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/29 03:05:03 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/05/29 03:35:19 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,19 @@ Converter::Converter(const Converter &obj)
 
 Converter::~Converter()
 {
+}
+
+bool	Converter::detectPseudoLiterals(const std::string &src)
+{
+	std::string	pseudoLiterals[6] = {"-inff", "+inff", "nanf",
+									"-inf", "+inf", "nan"};
+
+	for (size_t i=0; i < 6; ++i)
+	{
+		if (src == pseudoLiterals[i])
+			return true;
+	}
+	return false;
 }
 
 void	Converter::detectDotZero(std::string src, size_t pos)

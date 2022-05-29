@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 23:31:36 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/29 03:04:24 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/05/29 03:34:50 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ class	Converter
 	Converter	&operator=(const Converter &obj);
 	Converter(const Converter &obj);
 	~Converter();
+
+	static bool	detectPseudoLiterals(const std::string &src);
 
 	void	detectType(std::string src);
 	void	detectDotZero(std::string src, size_t pos);
