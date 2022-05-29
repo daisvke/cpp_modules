@@ -6,13 +6,13 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 23:31:18 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/29 00:57:18 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/05/29 03:05:03 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Converter.hpp"
 
-Converter::Converter(): _srcType(0), _dotZero(false)
+Converter::Converter(): _srcType(0), _dotZero(false), _toChar(0)
 {
 }
 
@@ -102,7 +102,16 @@ void	Converter::fromInt(const char *src)
 {
 	double	toDbl = strtod(src, NULL);
 
-	_toChar = (toDbl >= ' ' && toDbl <= '~') ? static_cast<char>(toDbl) : 0;
+	if (toDbl >= ' ' && toDbl <= '~')
+		_toChar = static_cast<char>(toDbl);
+	else
+	{
+		_srcType |=_toCharError;
+		if (toDbl >= 0 && _toChar  <= 31)
+			_toChar |= _nonPrintable;
+		else
+			_toChar |= _noType;
+	}
 	_toInt = atoi(src);
 	_toFloat = _toInt;
 	_toDouble = _toInt;
@@ -112,7 +121,16 @@ void	Converter::fromFloat(const char *src)
 {
 	double	toDbl = strtod(src, NULL);
 
-	_toChar = (toDbl >= 'a' && toDbl <= 'z') || (toDbl >= 'A' && toDbl <= 'Z') ? static_cast<char>(toDbl) : 0;
+	if (toDbl >= ' ' && toDbl <= '~')
+		_toChar = static_cast<char>(toDbl);
+	else
+	{
+		_srcType |=_toCharError;
+		if (toDbl >= 0 && _toChar  < 32)
+			_toChar |= _nonPrintable;
+		else
+			_toChar |= _noType;
+	}
 	_toInt = atoi(src);
 	_toFloat = atof(src);
 	_toDouble = _toFloat;
@@ -130,13 +148,24 @@ void	Converter::convert(const char *src)
 		fromFloat(src);
 }
 
+void	Converter::printToCharError(void) const
+{
+	if (_toChar & _noType)
+		std::cout << "impossible";
+	else
+		std::cout << "Non displayable";
+}
+
 void	Converter::printResult(Converter res, std::string const &src) const
 {
 	bool	dotZero;
 
 	dotZero = !_dotZero && (_srcType == _double || _srcType == _float);
 	std::cout << "char: ";
-	_toChar == 0 ? std::cout << "Non displayable" : std::cout << "\'" << _toChar << "\'";
+	if (_srcType & _toCharError)
+		printToCharError();
+	else
+		std::cout << "\'" << _toChar << "\'";
 	std::cout << std::endl;
 	std::cout << "int: " << _toInt << std::endl;
 	std::cout << "float: " << _toFloat << (dotZero ? "" : ".0") << "f" << std::endl;

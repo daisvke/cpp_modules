@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 23:31:36 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/29 00:47:32 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/05/29 03:04:24 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ class	Converter
 	void	fromChar(const char *src);
 	void	fromInt(const char *src);
 	void	fromFloat(const char *src);
+	void	printToCharError(void) const;
 	void	printResult(Converter res, std::string const &src) const;
 
 	class	UnhandledTypeException: public std::exception
@@ -72,13 +73,14 @@ class	Converter
 
 	enum
 	{
-		_char = 1,
-		_int = 2,
-		_float = 4,
-		_double = 8,
+		_nonPrintable = 1,
+		_noType = 2,
+		_toCharError = 4,
 
-		_nonPrintable = 16,
-		_noType = 32,
+		_char = 8,
+		_int = 16,
+		_float = 32,
+		_double = 64,
 	};
 };
 

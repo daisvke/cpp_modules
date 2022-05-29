@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 23:31:21 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/29 00:52:41 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/05/29 01:02:42 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@
 void	printUsage(void)
 {
 	std::cerr << std::endl;
-	std::cout << "Usage: ./convert [char, int, float, or double]" << std::endl;
-	std::cerr << std::endl;
+	std::cerr << "Usage: ./convert [char, int, float, or double]" << std::endl;
 }
 
 void	printNanException(void)
@@ -53,6 +52,7 @@ int	main(int argc, char *argv[])
 		convert.printResult(convert, argv[1]);
 		return 0;
 	}
+	std::cerr << "Invalid number of arguments!" << std::endl;
 	printUsage();
 	return 1;	
 }
