@@ -6,12 +6,15 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 23:31:21 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/29 03:42:51 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/05/29 05:49:09 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Converter.hpp"
+
+#define MIN	0
+#define MAX	1
 
 void	printUsage(void)
 {
@@ -46,6 +49,19 @@ void	handlePseudoLiterals(const std::string &src)
 	}
 }
 
+template<typename T>
+long double	showMinMax(int limit)
+{
+	long double	res;
+
+	if (limit == MIN)
+		res = std::numeric_limits<T>::min();
+	std::cout << "max: " << std::numeric_limits<T>::max() << std::endl;
+	std::cout << std::endl;
+
+	return (res);
+}
+
 int	main(int argc, char *argv[])
 {
 	if (argc == 2)
@@ -53,9 +69,10 @@ int	main(int argc, char *argv[])
 		const std::string &src = argv[1];
 		Converter	convert;
 
+	std::cout << "int: " << showMinMax<int>(MIN) << std::endl;
 		handlePseudoLiterals(src);
 		convert.detectType(argv[1]);
-		try {convert.detectError();}
+		try {convert.detectError(argv[1]);}
 		catch (std::exception &e) {handleError(e.what());};
 		convert.convert(argv[1]);
 		convert.printResult(convert, argv[1]);

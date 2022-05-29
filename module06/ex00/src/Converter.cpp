@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 23:31:18 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/29 03:35:19 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/05/29 05:34:01 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,12 +95,21 @@ void	Converter::detectType(std::string src)
 		detectDotZero(src, ++dotPos);
 }
 
-void	Converter::detectError(void) const
+void	Converter::detectError(const char *src) const
 {
+	double	toDbl = strtod(src, NULL);
+
 	if (_srcType & _nonPrintable)
 		throw NonPrintableException();
 	if (_srcType & _noType)
 		throw UnhandledTypeException();
+	if (!(_srcType & _char))
+	{
+		std::cout << "======" << toDbl << std::endl;
+
+		if (_srcType & _int && toDbl > 1.10e+3)
+			std::cout << "higggggghhhhhh" << std::endl;
+	}
 }
 
 void	Converter::fromChar(const char *src)

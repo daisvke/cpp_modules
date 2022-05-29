@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 23:31:36 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/29 03:34:50 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/05/29 05:28:56 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <iostream>
 # include <string>
+# include <limits>
 # include <cmath>
 
 class	Converter
@@ -28,9 +29,10 @@ class	Converter
 
 	static bool	detectPseudoLiterals(const std::string &src);
 
+	void	showMinMax(void) const;
 	void	detectType(std::string src);
 	void	detectDotZero(std::string src, size_t pos);
-	void	detectError(void) const;
+	void	detectError(const char *src) const;
 	void	convert(const char *src);
 	void	fromChar(const char *src);
 	void	fromInt(const char *src);
