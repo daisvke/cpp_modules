@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 23:31:36 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/30 02:37:52 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/05/30 03:13:55 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,17 @@ class	Converter
 
 	template<typename T>
 	double	getMinMax(int limit) const;
-	int		checkLimits(const char *src, int type) const;
+	int		checkLimits(const std::string &src, int type) const;
 
 	void	detectType(std::string src);
 	void	detectDotZero(std::string src, size_t pos);
-	void	detectError(const char *src) const;
+	void	detectError(void) const;
 	void	convert(const char *src);
 	void	fromChar(const char *src);
 	void	fromInt(const char *src);
 	void	fromFloat(const char *src);
 	void	printToCharError(void) const;
-	void	printResult(Converter res, const char *src) const;
+	void	printResult(Converter res, const std::string &src) const;
 
 	class	UnhandledTypeException: public std::exception
 	{

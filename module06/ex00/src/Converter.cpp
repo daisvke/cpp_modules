@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 23:31:18 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/30 03:05:58 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/05/30 03:13:55 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,13 @@ double	Converter::getMinMax(int limit) const
 	return (res);
 }
 
-int	Converter::checkLimits(const char *src, int type) const
+int	Converter::checkLimits(const std::string &src, int type) const
 {
 	double	d;
 
 	if (_srcType != _char)
 	{
-		d = strtod(src, NULL);
+		d = std::stod(src, NULL);
 		if (errno == ERANGE)
 		{
 			std::cout << "==================="<<std::endl;
@@ -126,10 +126,8 @@ void	Converter::detectType(std::string src)
 		detectDotZero(src, ++dotPos);
 }
 
-void	Converter::detectError(const char *src) const
+void	Converter::detectError(void) const
 {
-	double	toDbl = strtod(src, NULL);
-
 	if (_srcType & _nonPrintable)
 		throw NonPrintableException();
 	if (_srcType & _noType)
@@ -202,7 +200,7 @@ void	Converter::printToCharError(void) const
 		std::cout << "Non displayable";
 }
 
-void	Converter::printResult(Converter res, const char *src) const
+void	Converter::printResult(Converter res, const std::string &src) const
 {
 	bool	dotZero;
 

@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 23:31:21 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/30 00:54:54 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/05/30 03:14:21 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	main(int argc, char *argv[])
 
 		handlePseudoLiterals(src);
 		convert.detectType(argv[1]);
-		try {convert.detectError(argv[1]);}
+		try {convert.detectError();}
 		catch (std::exception &e) {handleError(e.what());};
 		convert.convert(argv[1]);
 		convert.printResult(convert, argv[1]);
