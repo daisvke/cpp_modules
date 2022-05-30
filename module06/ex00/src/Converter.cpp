@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 23:31:18 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/30 05:30:50 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/05/30 10:02:04 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ double	Converter::getMinMax(int limit) const
 	double	res;
 
 	if (limit == _min)
-		res = std::numeric_limits<T>::min();
+		res = std::numeric_limits<T>::lowest();
 	else if (limit == _max)
 		res = std::numeric_limits<T>::max();
 	return (res);
@@ -44,14 +44,14 @@ double	Converter::getMinMax(int limit) const
 
 int	Converter::checkLimits(const std::string &src, int type) const
 {
-	double	d;
-	bool	error = false;
-
-	try { d = std::stod(src, NULL); }
-	catch (const std::out_of_range& oor) { return _error; }
-
 	if (_srcType != _char)
 	{
+		double	d;
+		bool	error = false;
+
+		try { d = std::stod(src, NULL); }
+		catch (const std::out_of_range& oor) { return _error; }
+
 		d = std::stod(src, NULL);
 		if ((type == _int && d < getMinMax<int>(_min))
 			|| (type == _int && d > getMinMax<int>(_max))
@@ -87,7 +87,7 @@ void	Converter::detectDotZero(std::string src, size_t pos)
 void	Converter::detectType(std::string src)
 {
 	size_t	dotCount = 0, fCount = 0;
-	size_t	len = src.length() - 1;
+	size_t	len = src.length();
 	size_t	dotPos;
 
 	for (size_t i=0; src[i]; ++i)
@@ -96,9 +96,9 @@ void	Converter::detectType(std::string src)
 			_srcType |= _nonPrintable;
 		if (i > 0 && src[i] != '-' && !isdigit(src[i]) && src[i] != '.' && src[i] != 'f')
 			_srcType |= _noType;
-		if ((src[i] == 'f' && i != len) || (src[i] == '-' && i != 0))
+		if ((src[i] == 'f' && i != len - 1 && len != 1) || (src[i] == '-' && i != 0))
 			_srcType |= _noType;
-		if (src[i] == '.' && (i == 0 || i == len))
+		if (src[i] == '.' && ((i == 0 && len != 1) || (i == (len - 1) && len != 1)))
 			_srcType |= _noType;
 		if (src[i] == '.')
 		{
@@ -111,13 +111,15 @@ void	Converter::detectType(std::string src)
 			_srcType |=_noType;
 	}
 
-	if (dotCount && fCount)
+	if (len == 1 && !isdigit(src[0]))
+		_srcType |= _char;
+	else if (dotCount && fCount)
 		_srcType |= _float;
 	else if (dotCount && !fCount)
 		_srcType |= _double;
 	else if (!dotCount && fCount)
 		_srcType |= _noType;
-	else if (!isalpha(src[0]) && !dotCount && !fCount)
+	else if (!dotCount && !fCount)
 		_srcType |= _int;
 	else
 		_srcType |= _char;
@@ -202,7 +204,6 @@ void	Converter::printToCharError(void) const
 void	Converter::printResult(Converter res, const std::string &src) const
 {
 	bool	dotZero;
-	std::cout << "type:   " << _srcType << std::endl;
 
 	dotZero = !_dotZero && (_srcType == _double || _srcType == _float);
 	std::cout << "char:\t\t";
