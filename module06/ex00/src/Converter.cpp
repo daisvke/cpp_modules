@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 23:31:18 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/29 05:34:01 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/05/30 03:05:58 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,47 @@ Converter::~Converter()
 {
 }
 
+template<typename T>
+double	Converter::getMinMax(int limit) const
+{
+	double	res;
+
+	if (limit == _min)
+		res = std::numeric_limits<T>::min();
+	else
+		res = std::numeric_limits<T>::max();
+	return (res);
+}
+
+int	Converter::checkLimits(const char *src, int type) const
+{
+	double	d;
+
+	if (_srcType != _char)
+	{
+		d = strtod(src, NULL);
+		if (errno == ERANGE)
+		{
+			std::cout << "==================="<<std::endl;
+			return _error;
+		}
+		if ((type == _int && d < getMinMax<int>(_min))
+			|| (type == _int && d > getMinMax<int>(_max))
+			|| (type == _float && d < getMinMax<float>(_min))
+			|| (type == _float && d > getMinMax<float>(_max)))
+			return _error;
+	}
+	return _ok;
+}
+
 bool	Converter::detectPseudoLiterals(const std::string &src)
 {
 	std::string	pseudoLiterals[6] = {"-inff", "+inff", "nanf",
 									"-inf", "+inf", "nan"};
 
 	for (size_t i=0; i < 6; ++i)
-	{
 		if (src == pseudoLiterals[i])
 			return true;
-	}
 	return false;
 }
 
@@ -103,13 +134,6 @@ void	Converter::detectError(const char *src) const
 		throw NonPrintableException();
 	if (_srcType & _noType)
 		throw UnhandledTypeException();
-	if (!(_srcType & _char))
-	{
-		std::cout << "======" << toDbl << std::endl;
-
-		if (_srcType & _int && toDbl > 1.10e+3)
-			std::cout << "higggggghhhhhh" << std::endl;
-	}
 }
 
 void	Converter::fromChar(const char *src)
@@ -135,8 +159,8 @@ void	Converter::fromInt(const char *src)
 			_toChar |= _noType;
 	}
 	_toInt = atoi(src);
-	_toFloat = _toInt;
-	_toDouble = _toInt;
+	_toFloat = atof(src);
+	_toDouble = _toFloat;
 }
 
 void	Converter::fromFloat(const char *src)
@@ -178,18 +202,36 @@ void	Converter::printToCharError(void) const
 		std::cout << "Non displayable";
 }
 
-void	Converter::printResult(Converter res, std::string const &src) const
+void	Converter::printResult(Converter res, const char *src) const
 {
 	bool	dotZero;
 
 	dotZero = !_dotZero && (_srcType == _double || _srcType == _float);
-	std::cout << "char: ";
+	std::cout << "char:\t\t";
 	if (_srcType & _toCharError)
 		printToCharError();
 	else
 		std::cout << "\'" << _toChar << "\'";
 	std::cout << std::endl;
-	std::cout << "int: " << _toInt << std::endl;
-	std::cout << "float: " << _toFloat << (dotZero ? "" : ".0") << "f" << std::endl;
-	std::cout << "double: " << _toDouble << (dotZero ? "" : ".0") << std::endl;
+
+	std::cout << "int:\t\t";
+	if (checkLimits(src, _int) == _ok)
+		std::cout << _toInt;
+	else
+		std::cout << "impossible";
+	std::cout << std::endl;
+	
+	std::cout << "float:\t\t";
+	if (checkLimits(src, _float) == _ok)
+		std::cout << _toFloat << (dotZero ? "" : ".0") << "f";
+	else
+		std::cout << "impossible";
+	std::cout << std::endl;
+
+	std::cout << "double:\t\t";
+	if (checkLimits(src, _double) == _ok)
+		std::cout << _toDouble << (dotZero ? "" : ".0");
+	else
+		std::cout << "impossible";
+	std::cout << std::endl;
 }

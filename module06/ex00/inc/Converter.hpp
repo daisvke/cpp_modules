@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 23:31:36 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/29 05:28:56 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/05/30 02:37:52 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <string>
 # include <limits>
 # include <cmath>
+# include <errno.h>
 
 class	Converter
 {
@@ -29,7 +30,10 @@ class	Converter
 
 	static bool	detectPseudoLiterals(const std::string &src);
 
-	void	showMinMax(void) const;
+	template<typename T>
+	double	getMinMax(int limit) const;
+	int		checkLimits(const char *src, int type) const;
+
 	void	detectType(std::string src);
 	void	detectDotZero(std::string src, size_t pos);
 	void	detectError(const char *src) const;
@@ -38,7 +42,7 @@ class	Converter
 	void	fromInt(const char *src);
 	void	fromFloat(const char *src);
 	void	printToCharError(void) const;
-	void	printResult(Converter res, std::string const &src) const;
+	void	printResult(Converter res, const char *src) const;
 
 	class	UnhandledTypeException: public std::exception
 	{
@@ -74,6 +78,18 @@ class	Converter
 	int		_toInt;
 	float	_toFloat;
 	double	_toDouble;
+
+	enum
+	{
+		_min = 0,
+		_max = 1
+	};
+
+	enum
+	{
+		_error = 0,
+		_ok = 1
+	};
 
 	enum
 	{
