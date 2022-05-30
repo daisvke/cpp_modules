@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 23:31:18 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/30 10:02:04 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/05/31 01:23:19 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,11 +94,9 @@ void	Converter::detectType(std::string src)
 	{
 		if (src[i] < ' ')
 			_srcType |= _nonPrintable;
-		if (i > 0 && src[i] != '-' && !isdigit(src[i]) && src[i] != '.' && src[i] != 'f')
-			_srcType |= _noType;
-		if ((src[i] == 'f' && i != len - 1 && len != 1) || (src[i] == '-' && i != 0))
-			_srcType |= _noType;
-		if (src[i] == '.' && ((i == 0 && len != 1) || (i == (len - 1) && len != 1)))
+		if ((i > 0 && src[i] != '-' && !isdigit(src[i]) && src[i] != '.' && src[i] != 'f')
+			|| ((src[i] == 'f' && i != len - 1 && len != 1) || (src[i] == '-' && i != 0))
+			|| (src[i] == '.' && ((i == 0 && len != 1) || (i == (len - 1) && len != 1))))
 			_srcType |= _noType;
 		if (src[i] == '.')
 		{
@@ -108,16 +106,16 @@ void	Converter::detectType(std::string src)
 		if (src[i] == 'f')
 			++fCount;
 		if (dotCount > 1 || fCount > 1)
-			_srcType |=_noType;
+			_srcType |= _noType;
 	}
 
 	if (len == 1 && !isdigit(src[0]))
 		_srcType |= _char;
-	else if (dotCount && fCount)
+	else if (dotCount && fCount && src != "-.f")
 		_srcType |= _float;
 	else if (dotCount && !fCount)
 		_srcType |= _double;
-	else if (!dotCount && fCount)
+	else if ((!dotCount && fCount) || src == "-.f")
 		_srcType |= _noType;
 	else if (!dotCount && !fCount)
 		_srcType |= _int;
