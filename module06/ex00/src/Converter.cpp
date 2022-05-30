@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 23:31:18 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/30 05:23:33 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/05/30 05:30:50 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,53 +37,26 @@ double	Converter::getMinMax(int limit) const
 
 	if (limit == _min)
 		res = std::numeric_limits<T>::min();
-	else
+	else if (limit == _max)
 		res = std::numeric_limits<T>::max();
 	return (res);
 }
-/*
+
 int	Converter::checkLimits(const std::string &src, int type) const
 {
 	double	d;
+	bool	error = false;
+
+	try { d = std::stod(src, NULL); }
+	catch (const std::out_of_range& oor) { return _error; }
 
 	if (_srcType != _char)
 	{
 		d = std::stod(src, NULL);
-		if (errno == ERANGE)
-		{
-			std::cout << "==================="<<std::endl;
-			return _error;
-		}
 		if ((type == _int && d < getMinMax<int>(_min))
 			|| (type == _int && d > getMinMax<int>(_max))
 			|| (type == _float && d < getMinMax<float>(_min))
 			|| (type == _float && d > getMinMax<float>(_max)))
-			return _error;
-	}
-	return _ok;
-}*/
-
-int	Converter::checkLimits(const std::string &src, int type) const
-{
-	double	d;
-	/*
-	long double	d;
-	bool	error = false;
-
-	try { d = std::stod(src, NULL); }
-	catch (const std::out_of_range& oor) { error = true; }
-	*/
-
-
-	if (_srcType != _char)
-	{
-		d = std::stod(src, NULL);
-		if ((type == _int && d < getMinMax<int>(_min))
-			|| (type == _int && d > getMinMax<int>(_max))
-			|| (type == _float && d < getMinMax<float>(_min))
-			|| (type == _float && d > getMinMax<float>(_max))
-			|| (type == _double && d < getMinMax<double>(_min))
-			|| (type == _double && d > getMinMax<double>(_max)))
 			return _error;
 	}
 	return _ok;
