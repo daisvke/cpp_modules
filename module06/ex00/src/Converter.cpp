@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 23:31:18 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/30 03:13:55 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/05/30 05:23:33 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ double	Converter::getMinMax(int limit) const
 		res = std::numeric_limits<T>::max();
 	return (res);
 }
-
+/*
 int	Converter::checkLimits(const std::string &src, int type) const
 {
 	double	d;
@@ -58,6 +58,32 @@ int	Converter::checkLimits(const std::string &src, int type) const
 			|| (type == _int && d > getMinMax<int>(_max))
 			|| (type == _float && d < getMinMax<float>(_min))
 			|| (type == _float && d > getMinMax<float>(_max)))
+			return _error;
+	}
+	return _ok;
+}*/
+
+int	Converter::checkLimits(const std::string &src, int type) const
+{
+	double	d;
+	/*
+	long double	d;
+	bool	error = false;
+
+	try { d = std::stod(src, NULL); }
+	catch (const std::out_of_range& oor) { error = true; }
+	*/
+
+
+	if (_srcType != _char)
+	{
+		d = std::stod(src, NULL);
+		if ((type == _int && d < getMinMax<int>(_min))
+			|| (type == _int && d > getMinMax<int>(_max))
+			|| (type == _float && d < getMinMax<float>(_min))
+			|| (type == _float && d > getMinMax<float>(_max))
+			|| (type == _double && d < getMinMax<double>(_min))
+			|| (type == _double && d > getMinMax<double>(_max)))
 			return _error;
 	}
 	return _ok;
@@ -114,10 +140,10 @@ void	Converter::detectType(std::string src)
 
 	if (dotCount && fCount)
 		_srcType |= _float;
-	else if (!dotCount && fCount)
-		_srcType |= _noType;
 	else if (dotCount && !fCount)
 		_srcType |= _double;
+	else if (!dotCount && fCount)
+		_srcType |= _noType;
 	else if (!isalpha(src[0]) && !dotCount && !fCount)
 		_srcType |= _int;
 	else
@@ -158,7 +184,7 @@ void	Converter::fromInt(const char *src)
 	}
 	_toInt = atoi(src);
 	_toFloat = atof(src);
-	_toDouble = _toFloat;
+	_toDouble = std::stod(src);
 }
 
 void	Converter::fromFloat(const char *src)
@@ -177,7 +203,7 @@ void	Converter::fromFloat(const char *src)
 	}
 	_toInt = atoi(src);
 	_toFloat = atof(src);
-	_toDouble = _toFloat;
+	_toDouble = std::stod(src, NULL);
 }
 
 void	Converter::convert(const char *src)
@@ -203,6 +229,7 @@ void	Converter::printToCharError(void) const
 void	Converter::printResult(Converter res, const std::string &src) const
 {
 	bool	dotZero;
+	std::cout << "type:   " << _srcType << std::endl;
 
 	dotZero = !_dotZero && (_srcType == _double || _srcType == _float);
 	std::cout << "char:\t\t";
