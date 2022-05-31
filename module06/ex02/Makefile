@@ -16,7 +16,10 @@ INC					=	-I inc/
 
 SRC_DIR				=	src/
 SRC_FILES			=	main.cpp \
-						Base.cpp
+						Base.cpp \
+						A.cpp \
+						B.cpp \
+						C.cpp
 SRC					=	$(addprefix $(SRC_DIR), $(SRC_FILES))
 
 

@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Base.hpp                                           :+:      :+:    :+:   */
+/*   B.hpp                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/31 03:48:46 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/31 05:37:42 by dtanigaw         ###   ########.fr       */
+/*   Created: 2022/05/31 04:59:31 by dtanigaw          #+#    #+#             */
+/*   Updated: 2022/05/31 05:42:09 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BASE_H
-# define BASE_H
+#ifndef B_H
+# define B_H
 
-class Base
+# include "Base.hpp"
+
+class	B: public Base
 {
-	public:
-
-	virtual ~Base();
 };
 
 #endif
