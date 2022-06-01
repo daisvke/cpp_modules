@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 23:31:36 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/30 10:15:40 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/06/01 07:43:16 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,17 @@ class	Converter
 	static bool	detectPseudoLiterals(const std::string &src);
 
 	template<typename T>
-	double	getMinMax(int limit) const;
+	double	getMinMax(int limit) const
+	{
+		double	res;
+
+		if (limit == _min)
+			res = std::numeric_limits<T>::lowest();
+		else if (limit == _max)
+			res = std::numeric_limits<T>::max();
+		return (res);
+	}
+
 	int		checkLimits(const std::string &src, int type) const;
 
 	void	detectType(std::string src);

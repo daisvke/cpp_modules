@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 23:31:18 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/31 01:23:19 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/06/01 07:42:46 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,6 @@ Converter::Converter(const Converter &obj)
 
 Converter::~Converter()
 {
-}
-
-template<typename T>
-double	Converter::getMinMax(int limit) const
-{
-	double	res;
-
-	if (limit == _min)
-		res = std::numeric_limits<T>::lowest();
-	else if (limit == _max)
-		res = std::numeric_limits<T>::max();
-	return (res);
 }
 
 int	Converter::checkLimits(const std::string &src, int type) const
