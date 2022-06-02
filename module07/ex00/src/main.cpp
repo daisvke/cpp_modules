@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 07:46:52 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/06/01 08:04:18 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/06/01 08:06:32 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,24 @@
 
 int	main(void)
 {
+	int a = 2;
+	int b = 3;
+
+	::swap( a, b );
+	std::cout << "a = " << a << ", b = " << b << std::endl;
+	std::cout << "min( a, b ) = " << ::min( a, b ) << std::endl;
+	std::cout << "max( a, b ) = " << ::max( a, b ) << std::endl;
+	std::string c = "chaine1";
+	std::string d = "chaine2";
+	::swap(c, d);
+	std::cout << "c = " << c << ", d = " << d << std::endl;
+	std::cout << "min( c, d ) = " << ::min( c, d ) << std::endl;
+	std::cout << "max( c, d ) = " << ::max( c, d ) << std::endl;
+
+	std::cout << std::endl;
+	std::cout << "==============================================" << std::endl;
+	std::cout << std::endl;
+
 	char	ca = 'a', cb = 'b';
 	int		ia = 42, ib = 424242;
 	float	fa = -2390.0, fb = 263823.232; 
