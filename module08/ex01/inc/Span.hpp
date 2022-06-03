@@ -6,13 +6,14 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 01:02:43 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/06/03 03:23:56 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/06/03 05:27:04 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SPAN_HPP
 # define SPAN_HPP
 
+#include <iostream>
 #include <algorithm>
 #include <stdexcept>
 #include <vector>
@@ -27,7 +28,12 @@ class	Span
 	Span	&operator=(const Span &obj);
 	~Span();
 
+	std::vector<int>	getArray(void) const;
+
+	int		getMax(void) const;
 	void	addNumber(int nbr);
+	void	addNbrByIteratorRange(std::vector<int>::iterator begin,
+		std::vector<int>::iterator end);
 	int		shortestSpan(void) const;
 	int		longestSpan(void) const;
 
@@ -49,5 +55,7 @@ class	Span
 	unsigned int		_max;
 	std::vector<int>	_array;
 };
+
+std::ostream	&operator<<(std::ostream &stream, const Span &obj);
 
 #endif
