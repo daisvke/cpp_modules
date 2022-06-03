@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 01:02:44 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/06/03 05:35:57 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/06/03 09:14:21 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,12 @@ void	Span::addNbrByIteratorRange(std::vector<int>::iterator begin,
 	std::vector<int>::iterator end)
 {
 	std::vector<int>	range(begin, end);
-
+	
+	std::cout << "adding number by iterator range..." << std::endl;
 	if (range.size() > (_max - _array.size()))
 		throw std::out_of_range("The array does not have enough space left!");
 	_array.insert(_array.end(), begin, end);
-	std::cout << "addNbrByIteratorRange: The array has been updated!" << std::endl;
+	std::cout << "The array has been updated!" << std::endl;
 }
 
 int	Span::shortestSpan(void) const
@@ -112,9 +113,9 @@ std::ostream	&operator<<(std::ostream &stream, const Span &obj)
 		int	max = *(std::max_element(array.begin(), array.end()));
 		int	min = *(std::min_element(array.begin(), array.end()));
 
-		stream << "Span object info: "
-			<< "max size: " << obj.getMax() << ", current size: " << array.size()
-			<< ", min: " << min << ", max: " << max;
+		stream << "-> Span object info: "
+			<< "[max size: " << obj.getMax() << ", current size: " << array.size()
+			<< ", min: " << min << ", max: " << max << "]";
 	}
 	else
 		stream << "The array is empty!";
