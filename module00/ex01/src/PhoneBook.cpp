@@ -16,7 +16,7 @@ void	PhoneBook::add(void)
 	std::string	input;
 	int			size;
 
-	for (int i=0; i < FIELD_NBR; ++i)
+	for (int i(0); i < FIELD_NBR; ++i)
 	{
 		std::cout << "Enter ";
 		contact.show_field_name(i);

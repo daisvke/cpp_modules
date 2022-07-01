@@ -13,11 +13,12 @@ int	main(void)
 		std::cout << "Please enter command:" << std::endl;
 		std::cin >> command;
 		std::cout << std::endl;
+
 		if (command.compare("ADD") == 0)
 			PhoneBook.add();
 		else if (command.compare("SEARCH") == 0)
 			PhoneBook.search();
-		else if (command.compare("END") == 0)
+		else if (command.compare("EXIT") == 0)
 			break ;
 	}
 	return (0);
