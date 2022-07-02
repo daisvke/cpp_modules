@@ -28,7 +28,7 @@ void	PhoneBook::add(void)
 
 	size = get_contact_nbr();
 	if (size >= MAX_CONTACT_NBR)
-		_contacts[MAX_CONTACT_NBR - 1] = contact;
+		_contacts[0] = contact;
 	else
 	{
 		_contacts[size] = contact;
@@ -47,8 +47,10 @@ void	PhoneBook::search(void) const
 	std::cin >> index;
 	if (std::cin.fail())
 	{
-		std::cout << "Please enter a correct number" << std::endl;
 		std::cin.clear();
+  		std::string ignoreLine;
+  		std::getline(std::cin, ignoreLine);
+		std::cout << "Please enter a valid number!" << std::endl;
 		return;
 	}
 
@@ -59,7 +61,8 @@ void	PhoneBook::search(void) const
 	std::cout << std::endl;
 	if (index > max)
 	{
-		std::cout << "Please enter a correct number" << std::endl;
+		std::cin.clear();
+		std::cout << "Please enter a correct index!" << std::endl;
 		return ;
 	}
 	show_contact(index);

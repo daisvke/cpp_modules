@@ -4,7 +4,7 @@ NAME				=	phonebook
 
 #			C C  F L A G S			  #
 
-CC					=	clang++
+CC					=	c++
 CFLAGS				=	-Wall -Werror -Wextra -std=c++98
 INC					=	-I inc/
 
