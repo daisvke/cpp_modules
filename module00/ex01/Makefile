@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: dtanigaw <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/07/02 19:50:29 by dtanigaw          #+#    #+#              #
+#    Updated: 2022/07/02 22:30:08 by dtanigaw         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 #	 E X E C U T A B L E  N A M E	 #
 
 NAME				=	phonebook
@@ -18,7 +30,8 @@ SRC_DIR				=	src/
 SRC_FILES			=	ascii_art.cpp \
 						Contact.cpp \
 						main.cpp \
-						PhoneBook.cpp
+						PhoneBook.cpp \
+						utils.cpp
 SRC					=	$(addprefix $(SRC_DIR), $(SRC_FILES))
 
 
@@ -42,7 +55,7 @@ $(NAME): $(OBJ)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.cpp
 	mkdir -p $(OBJ_DIR)
-	$(CC) $(INC) $(C_FLAGS) -o $@ -c $<
+	$(CC) $(INC) $(CFLAGS) -o $@ -c $<
 
 
 # C L E A N  &  O T H E R  R U L E S  #

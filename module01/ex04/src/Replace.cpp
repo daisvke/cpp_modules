@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 22:41:51 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/13 05:09:38 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/02 22:14:48 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,13 @@ bool	Replace::replace(std::string toReplace, std::string replaceWith)
 	if (toReplace == "")
 	{
 		std::cerr << "ERROR: Please enter a valid string to replace" << std::endl;
+		_inStream.close();
 		return (false);
 	}
 	res.assign((std::istreambuf_iterator<char>(_inStream)),
 		(std::istreambuf_iterator<char>()));
 
-	for (int pos=0; pos < res.length(); pos++)
+	for (int pos(0); pos < res.length(); pos++)
 	{
 		if (res.compare(pos, size, toReplace) == 0)
 		{
@@ -66,4 +67,5 @@ void	Replace::putToOutFile(std::string fileContent)
 	}
 	else
 		std::cerr << "ERROR: Failed to open " << _fileName << std::endl;
+	//_inStream.close();
 }

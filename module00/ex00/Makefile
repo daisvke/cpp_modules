@@ -4,7 +4,7 @@ NAME				=	megaphone
 
 #			C C  F L A G S			  #
 
-CC					=	clang++
+CC					=	c++
 CFLAGS				=	-Wall -Werror -Wextra -std=c++98
 
 
@@ -39,7 +39,7 @@ $(NAME): $(OBJ)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.cpp
 	mkdir -p $(OBJ_DIR)
-	$(CC) $(C_FLAGS) -o $@ -c $<
+	$(CC) $(CFLAGS) -o $@ -c $<
 
 
 # C L E A N  &  O T H E R  R U L E S  #

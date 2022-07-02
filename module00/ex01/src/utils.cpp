@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   newZombie.cpp                                      :+:      :+:    :+:   */
+/*   utils.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dtanigaw <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/02 20:45:58 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/07/02 20:46:14 by dtanigaw         ###   ########.fr       */
+/*   Created: 2022/07/02 19:49:30 by dtanigaw          #+#    #+#             */
+/*   Updated: 2022/07/03 00:06:40 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+# include "utils.hpp"
 
-Zombie*	newZombie(std::string name)
+void	ft_clear_cin()
 {
-	Zombie	*Zombie;
+	std::cin.clear();
+	std::string ignoreLine;
+	std::getline(std::cin, ignoreLine);
+}
 
-	Zombie = new class Zombie(name);
-	return (Zombie);
+std::string ft_to_string(size_t val)
+{
+    std::stringstream stream;
+    stream << val;
+    return stream.str();
 }

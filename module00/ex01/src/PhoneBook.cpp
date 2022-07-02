@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dtanigaw <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/02 19:49:41 by dtanigaw          #+#    #+#             */
+/*   Updated: 2022/07/03 00:06:17 by dtanigaw         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "PhoneBook.hpp"
 
 PhoneBook::PhoneBook()
@@ -18,12 +30,19 @@ void	PhoneBook::add(void)
 
 	for (int i(0); i < FIELD_NBR; ++i)
 	{
-		std::cout << "Enter ";
-		contact.show_field_name(i);
-		std::cout << ":" << std::endl;
-		std::cin >> input;
-		std::cout << std::endl;
-		contact.add_field(i, input);
+		while (1)
+		{
+			std::cout << "Enter ";
+			contact.show_field_name(i);
+			std::cout << ":" << std::endl;
+			std::cin >> input;
+			std::cout << std::endl;
+
+			try
+			{ contact.add_field(i, input); }
+			catch (std::exception &e) { std::cout << e.what() << std::endl; continue; }
+			break ;
+		}
 	}
 
 	size = get_contact_nbr();
@@ -34,38 +53,32 @@ void	PhoneBook::add(void)
 		_contacts[size] = contact;
 		++_contactNbr;
 	}
+	ft_clear_cin();
 }
 
 void	PhoneBook::search(void) const
 {
 	size_t	index;
 	size_t	size;
-	size_t	max;
 
 	show();
 	std::cout << "Enter index: " << std::endl;
 	std::cin >> index;
 	if (std::cin.fail())
 	{
-		std::cin.clear();
-  		std::string ignoreLine;
-  		std::getline(std::cin, ignoreLine);
-		std::cout << "Please enter a valid number!" << std::endl;
-		return;
+		ft_clear_cin();
+		throw(SearchInvalidInputException());
 	}
 
 	size = get_contact_nbr();
-	if (size == 0)
-		return;
-	max =  size - 1 > MAX_CONTACT_NBR ? 0 : size - 1;
 	std::cout << std::endl;
-	if (index > max)
+	if (index > size - 1)
 	{
-		std::cin.clear();
-		std::cout << "Please enter a correct index!" << std::endl;
-		return ;
+		ft_clear_cin();
+		throw(SearchIncorrectIndexException());
 	}
 	show_contact(index);
+	ft_clear_cin();
 }
 
 void	PhoneBook::show_contact(int id) const
@@ -74,7 +87,7 @@ void	PhoneBook::show_contact(int id) const
 
 	std::cout << std::endl;
 	size = get_contact_nbr();
-	for (int i=0; i < FIELD_NBR; ++i)
+	for (int i(0); i < FIELD_NBR; ++i)
 	{
 		_contacts[id].show_field_name(i);
 		std::cout << ": ";
@@ -97,10 +110,10 @@ std::string	ft_truncate_and_replace(std::string str)
 	}
 	else if (len < 10)
 	{
-		for (int i=0; i < 10; ++i)
+		for (int i(0); i < 10; ++i)
 			new_str[i] = ' ';
 		start = 10 - len;
-		for (int i=0; str[i]; ++i)
+		for (int i(0); str[i]; ++i)
 		{
 			new_str[start] = str[i];
 			++start;
@@ -125,9 +138,9 @@ void	PhoneBook::show(void) const
 	std::cout << "|     index|first name| last name|  nickname|" << std::endl;
 	std::cout << std::string(45, '=') << std::endl;
 
-	for (int i=0; i < size; ++i)
+	for (size_t i(0); i < size; ++i)
 	{
-		std::string	index = std::to_string(i);
+		std::string	index = ft_to_string(i);
 		index = ft_truncate_and_replace(index);
 		firstname = ft_truncate_and_replace(_contacts[i].get_field(FIRSTNAME));
 		lastname = ft_truncate_and_replace(_contacts[i].get_field(LASTNAME));

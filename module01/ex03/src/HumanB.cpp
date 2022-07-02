@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   HumanB.cpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dtanigaw <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/02 22:03:03 by dtanigaw          #+#    #+#             */
+/*   Updated: 2022/07/02 22:03:08 by dtanigaw         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "HumanB.hpp"
 
 HumanB::HumanB(std::string name): _name(name), _weapon(0)
@@ -16,5 +28,5 @@ Weapon&	HumanB::getWeapon(void) const
 
 void	HumanB::attack(void) const
 {
-	std::cout << _name << "attacks with their " << _weapon->getType() << std::endl;
+	std::cout << _name << " attacks with their " << _weapon->getType() << std::endl;
 }

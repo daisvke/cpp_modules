@@ -1,7 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Contact.cpp                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dtanigaw <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/02 19:49:58 by dtanigaw          #+#    #+#             */
+/*   Updated: 2022/07/02 22:34:40 by dtanigaw         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Contact.hpp"
 
 Contact::Contact()
 {
+	_field_names[0] = "first name";
+	_field_names[1] = "last name";
+	_field_names[2] = "nickname";
+	_field_names[3] = "phone number";
+	_field_names[4] = "darkest secret";
 }
 
 void	Contact::show_field(int i) const
@@ -18,20 +35,13 @@ void	Contact::add_field(int i, std::string input)
 {
 	if (i == 3)
 	{
-		while (1)
+		for (int i(0); input[i]; ++i)
 		{
-			for (int i(0); input[i]; ++i)
+			if (!isdigit(input[i]) && input[i] != '-' && input[i] != ' ' && input[i] != '+')
 			{
-				if (isalpha(input[i]))
-				{
-					std::cout << "Phone number shouldn't contain any letters!" << std::endl;
-		std::cin.clear();
-  		std::string ignoreLine;
-  		std::getline(std::cin, ignoreLine);
-					break ;
-				}
+				ft_clear_cin();
+				throw(InvalidTelException());
 			}
-			
 		}
 	}
 	_fields[i] = input;

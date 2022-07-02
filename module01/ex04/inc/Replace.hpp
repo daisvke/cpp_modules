@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 01:53:40 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/13 05:19:23 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/02 22:03:34 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ class Replace
 	private:
 
 	std::string		_fileName;
-	std::ifstream	_inStream;
+	std::ifstream		_inStream;
 	std::string		_toReplace;
 	std::string		_replaceWith;
 };
