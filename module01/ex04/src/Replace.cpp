@@ -42,7 +42,7 @@ bool	Replace::replace(std::string toReplace, std::string replaceWith)
 	res.assign((std::istreambuf_iterator<char>(_inStream)),
 		(std::istreambuf_iterator<char>()));
 
-	for (int pos(0); pos < res.length(); pos++)
+	for (int pos(0); pos < (int)res.length(); pos++)
 	{
 		if (res.compare(pos, size, toReplace) == 0)
 		{

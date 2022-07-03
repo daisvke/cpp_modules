@@ -52,7 +52,7 @@ $(NAME): $(OBJ)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.cpp
 	mkdir -p $(OBJ_DIR)
-	$(CC) $(INC) $(C_FLAGS) -o $@ -c $<
+	$(CC) $(INC) $(CFLAGS) -o $@ -c $<
 
 
 # C L E A N  &  O T H E R  R U L E S  #
