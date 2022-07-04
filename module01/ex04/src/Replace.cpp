@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 22:41:51 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/07/03 01:03:03 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/04 19:13:33 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ Replace::Replace()
 {
 }
 
-bool	Replace::openInFile(std::string fileName)
+bool	Replace::openInFile(const char *fileName)
 {
 	_inStream.open(fileName);
 	if (_inStream)
@@ -57,8 +57,10 @@ bool	Replace::replace(std::string toReplace, std::string replaceWith)
 void	Replace::putToOutFile(std::string fileContent)
 {
 	std::ofstream	outStream;
+	std::string	fileNameString = _fileName + ".replace";
+	const char	*fileName = fileNameString.c_str();
 
-	outStream.open(_fileName + ".replace");
+	outStream.open(fileName);
 	if (outStream)
 	{
 		std::cout << "Wrote content into \'" << _fileName << ".replace\'" << std::endl;

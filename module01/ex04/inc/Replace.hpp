@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 01:53:40 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/07/02 22:03:34 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/04 19:01:15 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <iostream>
 # include <fstream>
+# include <stdlib.h>
 
 # define ERROR	0
 
@@ -23,7 +24,7 @@ class Replace
 	public:
 
 	Replace();
-	bool	openInFile(std::string fileName);
+	bool	openInFile(const char *fileName);
 	bool	replace(std::string toReplace, std::string replaceWith);
 	void	putToOutFile(std::string fileContent);
 
