@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 22:41:51 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/07/04 19:13:33 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/04 19:24:03 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,20 @@ bool	Replace::replace(std::string toReplace, std::string replaceWith)
 	res.assign((std::istreambuf_iterator<char>(_inStream)),
 		(std::istreambuf_iterator<char>()));
 
-	for (int pos(0); pos < (int)res.length(); pos++)
+	size_t	pos = 0;
+	while (pos < res.length())
 	{
 		if (res.compare(pos, size, toReplace) == 0)
 		{
 			res.erase(pos, size);
 			res.insert(pos, replaceWith);
 		}
+		++pos;
+	}
+	if (pos == 0)
+	{
+		std::cout << "ERROR: Source file is empty!" << std::endl;
+		return false;
 	}
 	putToOutFile(res);
 	return (true);
