@@ -6,7 +6,7 @@
 /*   By: dtanigaw <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 22:02:53 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/07/02 22:03:08 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/04 23:31:57 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ class	HumanB
 	public:
 
 	HumanB(std::string name);
-	void	setWeapon(Weapon &weapon);
+	void	setWeapon(Weapon *weapon);
 	Weapon&	getWeapon(void) const;
 	void	attack(void) const;
 
