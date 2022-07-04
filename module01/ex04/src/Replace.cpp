@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 22:41:51 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/07/04 19:24:03 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/04 21:28:41 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ bool	Replace::replace(std::string toReplace, std::string replaceWith)
 {
 	std::string	res;
 	size_t		size = toReplace.length();
+	size_t		replaceWithSize = replaceWith.length();
 
 	if (toReplace == "")
 	{
@@ -50,7 +51,7 @@ bool	Replace::replace(std::string toReplace, std::string replaceWith)
 			res.erase(pos, size);
 			res.insert(pos, replaceWith);
 		}
-		++pos;
+		pos += replaceWithSize;
 	}
 	if (pos == 0)
 	{

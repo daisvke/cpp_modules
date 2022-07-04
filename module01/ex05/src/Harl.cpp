@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 20:15:18 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/13 20:15:45 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/04 21:42:01 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	Harl::complain( std::string level )
 		&Harl::error
 	};
 
-	for (int i=0; i < 4; ++i)
+	for (int i(0); i < 4; ++i)
 	{
 		if (level == levels[i])
 		{

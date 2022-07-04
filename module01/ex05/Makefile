@@ -1,10 +1,22 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: dtanigaw <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/07/04 21:32:54 by dtanigaw          #+#    #+#              #
+#    Updated: 2022/07/04 21:34:20 by dtanigaw         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 #	 E X E C U T A B L E  N A M E	 #
 
 NAME				=	harl
 
 #			C C  F L A G S			  #
 
-CC					=	clang++
+CC					=	c++
 CFLAGS				=	-Wall -Werror -Wextra -std=c++98
 INC					=	-I inc/
 
@@ -40,7 +52,7 @@ $(NAME): $(OBJ)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.cpp
 	mkdir -p $(OBJ_DIR)
-	$(CC) $(INC) $(C_FLAGS) -o $@ -c $<
+	$(CC) $(INC) $(CFLAGS) -o $@ -c $<
 
 
 # C L E A N  &  O T H E R  R U L E S  #
