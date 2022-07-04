@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 23:31:57 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/16 04:46:00 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/04 22:06:09 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,17 @@ class	Fixed
 	Fixed( const int nbr);
 	Fixed( const float nbr );
 	Fixed( const Fixed &obj );
-	Fixed		&operator=( const Fixed &obj );
-	int			getRawBits( void ) const;
-	void		setRawBits( const int raw );
-	float		toFloat( void ) const;
-	int			toInt( void ) const;
+	Fixed	&operator=( const Fixed &obj );
+	int	getRawBits( void ) const;
+	void	setRawBits( const int raw );
+	float	toFloat( void ) const;
+	int	toInt( void ) const;
 	~Fixed();
 	
 
 	private:
 
-	int					_fixedPointNbr;
+	int			_fixedPointNbr;
 	static const int	_fractionalBits = 8;
 };
 
