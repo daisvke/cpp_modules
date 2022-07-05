@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 23:33:02 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/18 01:41:02 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/05 19:03:38 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 # define SCAVTRAP_HPP
 
 # include <iostream>
-
 # include "ClapTrap.hpp"
 
-class	ScavTrap : public ClapTrap
+# define CT_RED	"\033[1;31m"
+# define CT_WHITE	"\033[0m"
+
+	class	ScavTrap : public ClapTrap
 {
 	public:
 

@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 05:05:02 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/18 05:31:09 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/05 19:04:26 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 # include <iostream>
 # include "ClapTrap.hpp"
+
+# define CT_RED	"\033[1;31m"
+# define CT_WHITE	"\033[0m"
 
 class	FragTrap : public ClapTrap
 {

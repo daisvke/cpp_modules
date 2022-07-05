@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 23:33:09 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/18 05:58:33 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/05 19:02:57 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ ScavTrap::ScavTrap(ScavTrap const &obj, const std::string name): ClapTrap(name)
 
 ScavTrap	&ScavTrap::operator=(const ScavTrap &obj)
 {
+	(void)obj;
 	return *this;
 }
 
@@ -50,8 +51,9 @@ void	ScavTrap::attack(const std::string &target)
 			<< std::endl;
 	}
 	else
-		std::cout << _name << " cannot attack: he is either dead or has no energy points left!"
-			<< std::endl;
+		std::cout << CT_RED << _name <<
+			" cannot attack: he is either dead or has no energy points left!"
+			<< CT_WHITE << std::endl;
 }
 
 ScavTrap::~ScavTrap()

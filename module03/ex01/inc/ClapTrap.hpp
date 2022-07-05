@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 07:00:00 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/18 00:10:29 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/05 18:56:45 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define CLAPTRAP_HPP
 
 # include <iostream>
+
+# define CT_RED	"\033[1;31m"
+# define CT_WHITE	"\033[0m"
 
 class ClapTrap
 {

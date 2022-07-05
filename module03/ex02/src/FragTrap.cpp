@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 05:05:04 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/18 06:02:31 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/05 18:48:37 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,13 @@ FragTrap::FragTrap(FragTrap const &obj, const std::string name): ClapTrap(name)
 
 FragTrap	&FragTrap::operator=(const FragTrap &obj)
 {
+	(void)obj;
 	return *this;
 }
 
 void	FragTrap::highFivesGuys(void)
 {
-	std::cout << "FragTrap requests a positive high five" << std::endl;
+	std::cout << "FragTrap " << _name << " requests a positive high five" << std::endl;
 }
 
 void	FragTrap::attack(const std::string &target)
