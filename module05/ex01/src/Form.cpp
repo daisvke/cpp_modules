@@ -6,21 +6,21 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 04:40:05 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/20 20:46:43 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/06 06:16:45 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 
-Form::Form(): _name(""), _requiredGradeToSign(_minGrade),
-	_requiredGradeToExecute(_minGrade), _isSigned(false)
+Form::Form(): _name("Form"), _isSigned(false),
+	_requiredGradeToSign(_minGrade), _requiredGradeToExecute(_minGrade) 
 {
 	std::cout << "Form: Default constructor called" << std::endl;
 	checkGrade();
 }
 
-Form::Form(const std::string name, const size_t requiredGradeToSign,
-	const size_t requiredGradeToExecute): _name(name), _isSigned(false),
+Form::Form(const std::string name, const int requiredGradeToSign,
+	const int requiredGradeToExecute): _name(name), _isSigned(false),
 	_requiredGradeToSign(requiredGradeToSign), _requiredGradeToExecute(requiredGradeToExecute)
 {
 	std::cout << "Form: Parameterized constructor called" << std::endl;
@@ -36,6 +36,7 @@ Form::Form(const Form &obj): _name(obj._name), _isSigned(obj._isSigned),
 
 Form	&Form::operator=(const Form &obj)
 {
+	(void)obj;
 	std::cout << "Form: Assignment operator called" << std::endl;
 	return *this;
 }
@@ -50,12 +51,12 @@ std::string	Form::getName(void) const
 	return _name;
 }
 
-size_t	Form::getRequiredGradeToSign(void) const
+int	Form::getRequiredGradeToSign(void) const
 {
 	return _requiredGradeToSign;
 }
 	
-size_t	Form::getRequiredGradeToExecute(void) const
+int	Form::getRequiredGradeToExecute(void) const
 {
 	return _requiredGradeToExecute;
 }
@@ -77,7 +78,7 @@ void	Form::checkGrade(void) const
 
 void	Form::beSigned(const Bureaucrat &obj)
 {
-	size_t	grade = obj.getGrade();
+	int	grade = obj.getGrade();
 
 	if (grade <= _requiredGradeToSign)
 		_isSigned = true;

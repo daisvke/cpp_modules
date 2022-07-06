@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 23:37:42 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/20 20:48:47 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/06 06:14:06 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@ int	main(void)
 	try {Bureaucrat	b("B", 151);}
 	catch (std::exception &e)
 	{
-		std::cerr << "Initialized object has a grade that is too high !"
-			<< std::endl;
+		std::cerr << "-> " << e.what() << std::endl;
 	}
 
 	std::cout << std::endl;
@@ -35,7 +34,6 @@ int	main(void)
 	try {c.decremGrade();}
 	catch (std::exception &e)
 	{
-		std::cerr << "Aborting because of error..." << std::endl;
 		std::cerr << "-> " << e.what() << std::endl;
 	}
 	std::cout << std::endl;
@@ -54,7 +52,6 @@ int	main(void)
 	try {c.signForm(f);}
 	catch (std::exception &e)
 	{
-		std::cerr << "Aborting again because of error..." << std::endl;
 		std::cerr << "-> " << e.what() << std::endl;
 	}
 	std::cout << std::endl;

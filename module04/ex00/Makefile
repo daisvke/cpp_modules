@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: dtanigaw <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/07/06 08:25:27 by dtanigaw          #+#    #+#              #
+#    Updated: 2022/07/06 08:28:21 by dtanigaw         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 #	 E X E C U T A B L E  N A M E	 #
 
 NAME				=	animals
@@ -5,7 +17,7 @@ NAME				=	animals
 #			C C  F L A G S			  #
 
 CXX					=	c++
-CXXFLAGS				=	-Wall -Werror -Wextra -std=c++98
+CXXFLAGS			=	-Wall -Werror -Wextra -std=c++98
 INC					=	-I inc/
 
 #######################################
@@ -30,6 +42,15 @@ OBJ_DIR				=	obj/
 OBJ_FILES			=	$(SRC_FILES:.cpp=.o)
 OBJ					=	$(addprefix $(OBJ_DIR), $(OBJ_FILES))
 
+#			I N C .  F I L E S		  #
+
+INC_DIR				=	inc/
+INC_FILES			=	Animal.hpp \
+						Cat.hpp \
+						Dog.hpp \
+						WrongAnimal.hpp \
+						WrongCat.hpp
+INCS				=	$(addprefix $(INC_DIR), $(INC_FILES))
 
 #######################################
 #				R U L E S			  #
@@ -42,7 +63,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(CXX) -o $(NAME) $(OBJ)
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.cpp
+$(OBJ_DIR)%.o: $(SRC_DIR)%.cpp $(INCS)
 	mkdir -p $(OBJ_DIR)
 	$(CXX) $(INC) $(CXXFLAGS) -o $@ -c $<
 

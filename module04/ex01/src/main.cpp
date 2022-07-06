@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 23:05:31 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/07/06 04:50:05 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/06 08:33:49 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 int main()
 {
-	Cat a, b;
+	Dog a, b;
 	Animal *tab[4];
 
 	for (size_t i(0); i < 4; i++)

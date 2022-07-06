@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 23:37:44 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/20 20:44:50 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/06 06:10:57 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ Bureaucrat::Bureaucrat(): _name(""), _grade(_minGrade)
 	std::cout << "Bureaucrat: Default constructor called" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(const std::string name, const size_t grade)
+Bureaucrat::Bureaucrat(const std::string name, const int grade)
 	: _name(name), _grade(grade)
 {
 	std::cout << "Bureaucrat: Parameterized constructor called" << std::endl;
@@ -32,6 +32,7 @@ Bureaucrat::Bureaucrat(const Bureaucrat &obj)
 
 Bureaucrat	&Bureaucrat::operator=(const Bureaucrat &obj)
 {
+	(void)obj;
 	std::cout << "Bureaucrat: Assignment operator called" << std::endl;
 	return *this;
 }
@@ -46,7 +47,7 @@ std::string	Bureaucrat::getName(void) const
 	return _name;
 }
 
-size_t	Bureaucrat::getGrade(void) const
+int	Bureaucrat::getGrade(void) const
 {
 	return _grade;
 }
