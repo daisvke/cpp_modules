@@ -1,6 +1,18 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: dtanigaw <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/07/06 08:18:15 by dtanigaw          #+#    #+#              #
+#    Updated: 2022/07/06 08:39:23 by dtanigaw         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 #	 E X E C U T A B L E  N A M E	 #
 
-NAME				=	brain
+NAME				=	abstract
 
 #			C C  F L A G S			  #
 
@@ -29,6 +41,14 @@ OBJ_DIR				=	obj/
 OBJ_FILES			=	$(SRC_FILES:.cpp=.o)
 OBJ					=	$(addprefix $(OBJ_DIR), $(OBJ_FILES))
 
+#			I N C .  F I L E S		  #
+
+INC_DIR				=	inc/
+INC_FILES			=	Animal.hpp \
+						Cat.hpp \
+						Dog.hpp \
+						Brain.hpp
+INCS				=	$(addprefix $(INC_DIR), $(INC_FILES))
 
 #######################################
 #				R U L E S			  #
@@ -41,7 +61,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(CXX) -o $(NAME) $(OBJ)
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.cpp
+$(OBJ_DIR)%.o: $(SRC_DIR)%.cpp $(INCS)
 	mkdir -p $(OBJ_DIR)
 	$(CXX) $(INC) $(CXXFLAGS) -o $@ -c $<
 
@@ -59,5 +79,3 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
-
-
