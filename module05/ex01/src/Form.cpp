@@ -71,9 +71,6 @@ void	Form::checkGrade(void) const
 	if (_requiredGradeToSign > _minGrade 
 		|| _requiredGradeToExecute > _minGrade )
 		throw (GradeTooLowException());
-	else if (_requiredGradeToSign < _maxGrade 
-		|| _requiredGradeToExecute < _maxGrade )
-		throw (GradeTooHighException());
 }
 
 void	Form::beSigned(const Bureaucrat &obj)
