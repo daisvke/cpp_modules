@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 00:29:49 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/19 00:33:31 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/05 21:12:59 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ class WrongAnimal
 
 	WrongAnimal();
 	WrongAnimal(const WrongAnimal &obj);
+	WrongAnimal	&operator=(const WrongAnimal &obj);
+
 	void		makeSound(void) const;
 	const std::string	getType(void) const;
 	virtual ~WrongAnimal();

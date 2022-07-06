@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 23:10:31 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/19 00:19:53 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/05 21:14:11 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ class Dog : public Animal
 
 	Dog();
 	Dog(const Dog &src);
+	Dog	&operator=(const Dog &obj);
+
 	virtual void	makeSound(void) const;
 	virtual	~Dog();
 };

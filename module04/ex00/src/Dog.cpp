@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 23:10:23 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/19 00:16:06 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/05 23:15:51 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,13 @@ Dog::Dog(Dog const &obj)
 {
 	std::cout << "Dog: Copy constructor called" << std::endl;
 	*this = obj;
+}
+
+Dog	&Dog::operator=(const Dog &obj)
+{
+	std::cout << "Dog: Assignment constructor called" << std::endl;
+	_type = obj._type;
+	return *this;
 }
 
 void	Dog::makeSound(void) const

@@ -4,8 +4,8 @@ NAME				=	animals
 
 #			C C  F L A G S			  #
 
-CC					=	clang++
-CFLAGS				=	-Wall -Werror -Wextra -std=c++98
+CXX					=	c++
+CXXFLAGS				=	-Wall -Werror -Wextra -std=c++98
 INC					=	-I inc/
 
 #######################################
@@ -40,11 +40,11 @@ OBJ					=	$(addprefix $(OBJ_DIR), $(OBJ_FILES))
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) -o $(NAME) $(OBJ)
+	$(CXX) -o $(NAME) $(OBJ)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.cpp
 	mkdir -p $(OBJ_DIR)
-	$(CC) $(INC) $(C_FLAGS) -o $@ -c $<
+	$(CXX) $(INC) $(CXXFLAGS) -o $@ -c $<
 
 
 # C L E A N  &  O T H E R  R U L E S  #
@@ -60,5 +60,3 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
-
-

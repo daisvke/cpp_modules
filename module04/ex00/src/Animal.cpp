@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 23:05:29 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/19 00:15:47 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/05 21:12:21 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,13 @@ Animal::Animal(Animal const &obj)
 {
 	std::cout << "Animal: Copy constructor called" << std::endl;
 	*this = obj;
+}
+
+Animal	&Animal::operator=(Animal const &obj)
+{
+	std::cout << "Animal: Assignement operator called" << std::endl;
+	_type = obj.getType();
+	return *this;
 }
 
 void	Animal::makeSound(void) const

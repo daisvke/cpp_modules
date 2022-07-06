@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 23:10:33 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/19 00:49:48 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/05 21:15:31 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ class Cat : public Animal
 
 	Cat();
 	Cat(const Cat &obj);
+	Cat	&operator=(const Cat &obj);
+
 	virtual void	makeSound(void) const;
 	virtual	~Cat();
 };
