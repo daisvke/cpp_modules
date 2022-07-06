@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 23:05:29 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/19 07:06:52 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/06 04:33:42 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,10 @@ Animal::Animal(Animal const &obj)
 	*this = obj;
 }
 
-
 Animal	&Animal::operator=(Animal const &obj)
 {
 	std::cout << "Animal: Assignement operator called" << std::endl;
-	_type = obj.getType();
+	_type = obj._type;
 	return *this;
 }
 

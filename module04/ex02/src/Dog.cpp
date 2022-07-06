@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 23:10:23 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/19 21:29:56 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/06 03:08:01 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ Animal	&Dog::operator=(const Animal &obj)
 {
 	std::cout << "Cat: Animal assignment constructor called" << std::endl;
 	_type = obj.getType();
-	_brain = new Brain(*(obj.getBrain()));
 	return *this;
 }
 

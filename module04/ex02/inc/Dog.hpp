@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 23:10:31 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/19 21:44:24 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/06 01:02:56 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class Dog : public Animal
 	
 	virtual void	makeSound(void) const;
 	virtual Brain	*getBrain(void) const;
-	~Dog();
+	virtual	~Dog();
 
 
 	private:

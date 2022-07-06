@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 00:45:52 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/19 07:24:35 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/06 02:52:47 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ Brain	&Brain::operator=(const Brain &obj)
 {
 	std::cout << "Brain: Assignment constructor called" << std::endl;
 
-	for (int i=0; i < 100; ++i)
+	for (int i(0); i < 100; ++i)
 		_ideas[i] = obj._ideas[i];
 
 	return *this;
