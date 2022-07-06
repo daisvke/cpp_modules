@@ -12,7 +12,7 @@
 
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat(): _name(""), _grade(_minGrade)
+Bureaucrat::Bureaucrat(): _name("Bureaucrat"), _grade(_minGrade)
 {
 	std::cout << "Bureaucrat: Default constructor called" << std::endl;
 }

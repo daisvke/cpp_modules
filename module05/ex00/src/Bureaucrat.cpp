@@ -32,6 +32,7 @@ Bureaucrat::Bureaucrat(const Bureaucrat &obj)
 
 Bureaucrat	&Bureaucrat::operator=(const Bureaucrat &obj)
 {
+	(void)obj;
 	std::cout << "Bureaucrat: Assignment operator called" << std::endl;
 	return *this;
 }
