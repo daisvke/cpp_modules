@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 23:05:31 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/07/06 08:41:33 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/07 16:05:55 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 #define COLOR(C, c) C << c << RESET
 
 int main()
+// Switch between development/production
 {
 	Cat a, b;
 	Animal *tab[4];

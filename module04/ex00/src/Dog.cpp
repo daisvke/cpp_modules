@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 23:10:23 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/07/05 23:15:51 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/07 15:54:30 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ Dog::Dog()
 	std::cout << "Dog: Default constructor called" << std::endl;
 }
 
-Dog::Dog(Dog const &obj)
+Dog::Dog(Dog const &obj): Animal(obj)
 {
 	std::cout << "Dog: Copy constructor called" << std::endl;
 	*this = obj;
