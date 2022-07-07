@@ -6,7 +6,7 @@
 #    By: dtanigaw <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/06 08:25:27 by dtanigaw          #+#    #+#              #
-#    Updated: 2022/07/06 08:28:21 by dtanigaw         ###   ########.fr        #
+#    Updated: 2022/07/07 18:23:36 by dtanigaw         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,8 +28,8 @@ INC					=	-I inc/
 
 SRC_DIR				=	src/
 SRC_FILES			=	main.cpp \
-					Bureaucrat.cpp \
-					Form.cpp
+						Bureaucrat.cpp \
+						Form.cpp
 SRC					=	$(addprefix $(SRC_DIR), $(SRC_FILES))
 
 
@@ -43,7 +43,7 @@ OBJ					=	$(addprefix $(OBJ_DIR), $(OBJ_FILES))
 
 INC_DIR				=	inc/
 INC_FILES			=	Bureaucrat.hpp \
-					Form.hpp
+						Form.hpp
 INCS				=	$(addprefix $(INC_DIR), $(INC_FILES))
 
 #######################################

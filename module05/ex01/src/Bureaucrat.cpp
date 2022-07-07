@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 23:37:44 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/07/06 06:10:57 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/07 19:02:07 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,20 +75,20 @@ void	Bureaucrat::decremGrade(void)
 void	Bureaucrat::signForm(Form &form)
 {
 	try {form.beSigned(*this);}
-	catch (std::string const &errMessage)
+	catch (std::exception &e)
 	{
 		std::cerr << getName() << " couldn't sign " << form.getName()
-			<< " form because " << errMessage << std::endl;
+			<< " form because " << e.what() << std::endl;
 	}
-	std::cerr << getName() << " signed " << form.getName()
-		<< " form " << std::endl;
+	std::cerr << "\033[32m" << getName() << " signed " << form.getName()
+		<< " form " << "\033[0m" << std::endl;
 }
 
 std::ostream	&operator<<(std::ostream &stream, const Bureaucrat &obj)
 {
-	stream << "Name: " << obj.getName()
+	stream << "\033[33m" << "Name: " << obj.getName()
 	<< ", bureaucrat grade: " << obj.getGrade()
-	<< std::endl;
+	<< "\033[0m" << std::endl;
 
 	return stream;
 }

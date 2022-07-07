@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 03:12:37 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/07/06 06:15:40 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/07 18:29:52 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ class	Form
 	std::string	getName(void) const;
 	int		getRequiredGradeToSign(void) const;
 	int		getRequiredGradeToExecute(void) const;
-	bool		getStatus(void) const;
-	void		checkGrade(void) const;
-	void		beSigned(const Bureaucrat &obj);
+	bool	getStatus(void) const;
+	void	checkGrade(void) const;
+	void	beSigned(const Bureaucrat &obj);
 
 	class	GradeTooHighException: public std::exception
 	{
@@ -68,8 +68,8 @@ class	Form
 	static const int	_minGrade = 150;
 	static const int	_maxGrade = 1;
 	bool				_isSigned;
-	const int		_requiredGradeToSign;
-	const int		_requiredGradeToExecute;
+	const int			_requiredGradeToSign;
+	const int			_requiredGradeToExecute;
 	
 };
 

@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 23:37:45 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/07/06 06:16:03 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/07 19:03:08 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ class	Bureaucrat
 	~Bureaucrat();
 
 	std::string	getName(void) const;
-	int		getGrade(void) const;
+	int			getGrade(void) const;
 	void		checkGrade(void) const;
 	void		incremGrade(void);
 	void		decremGrade(void);
@@ -64,7 +64,7 @@ class	Bureaucrat
 	private:
 
 	const std::string	_name;
-	int				_grade;
+	int					_grade;
 	static const int	_minGrade = 150;
 	static const int	_maxGrade = 1;
 };

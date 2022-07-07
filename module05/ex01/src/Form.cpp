@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 04:40:05 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/07/06 06:16:45 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/07 19:03:08 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ Form::Form(): _name("Form"), _isSigned(false),
 	_requiredGradeToSign(_minGrade), _requiredGradeToExecute(_minGrade) 
 {
 	std::cout << "Form: Default constructor called" << std::endl;
-	checkGrade();
 }
 
 Form::Form(const std::string name, const int requiredGradeToSign,
@@ -71,6 +70,9 @@ void	Form::checkGrade(void) const
 	if (_requiredGradeToSign > _minGrade 
 		|| _requiredGradeToExecute > _minGrade )
 		throw (GradeTooLowException());
+	if (_requiredGradeToSign < _maxGrade 
+		|| _requiredGradeToExecute < _maxGrade )
+		throw (GradeTooHighException());
 }
 
 void	Form::beSigned(const Bureaucrat &obj)
@@ -85,14 +87,15 @@ void	Form::beSigned(const Bureaucrat &obj)
 
 std::ostream	&operator<<(std::ostream &stream, const Form &obj)
 {
-	stream << "Form name: " << obj.getName() << std::endl;
+	stream << "\033[36m" <<
+		"Form name: " << obj.getName() << std::endl;
 	stream << "Required grade to sign: " << obj.getRequiredGradeToSign()
 		<< std::endl;
 	stream << "Required grade to execute: " << obj.getRequiredGradeToExecute()
 		<< std::endl;
 	stream << "Status: "
 		<< (obj.getStatus() == true ? "signed" : "not signed")
-		<< std::endl;
+		<< "\033[0m" << std::endl;
 
 	return stream;
 }
