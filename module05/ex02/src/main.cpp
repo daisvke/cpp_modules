@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 23:37:42 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/07/08 05:11:10 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/08 18:14:17 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ int	main(void)
 	std::cout << "=============SHRUBERRY==============" << std::endl;
 
 	std::cout << a << std::endl;
-	std::cout << scf << std::endl;
+	std::cout << scf;
+	std::cout << "Target: " << scf.getTarget() << std::endl << std::endl;
 
 	a.signForm(scf);
 	a.executeForm(scf);
@@ -49,7 +50,8 @@ int	main(void)
 	RobotomyRequestForm		rrf(a.getName());
 
 	std::cout << a << std::endl;
-	std::cout << rrf << std::endl;
+	std::cout << rrf;
+	std::cout << "Target: " << rrf.getTarget() << std::endl << std::endl;
 
 	a.signForm(rrf);
 	a.executeForm(rrf);
@@ -71,7 +73,8 @@ int	main(void)
 	PresidentialPardonForm	ppf(c.getName());
 
 	std::cout << c << std::endl;
-	std::cout << ppf << std::endl;
+	std::cout << ppf;
+	std::cout << "Target: " << ppf.getTarget() << std::endl << std::endl;
 
 	c.executeForm(ppf);
 	c.signForm(ppf);

@@ -6,25 +6,25 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 04:40:05 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/21 22:31:19 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/08 05:31:43 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 
-Form::Form(): _name(""), _requiredGradeToSign(_minGrade),
-	_requiredGradeToExecute(_minGrade), _isSigned(false)
+Form::Form(): _name("Form"), _isSigned(false),
+	_requiredGradeToSign(_minGrade), _requiredGradeToExecute(_minGrade) 
 {
 	std::cout << "Form: Default constructor called" << std::endl;
-	checkGrade();
 }
 
-Form::Form(const std::string name, const size_t requiredGradeToSign,
-	const size_t requiredGradeToExecute): _name(name), _isSigned(false),
+Form::Form(const std::string name, const int requiredGradeToSign,
+	const int requiredGradeToExecute): _name(name), _isSigned(false),
 	_requiredGradeToSign(requiredGradeToSign), _requiredGradeToExecute(requiredGradeToExecute)
 {
 	std::cout << "Form: Parameterized constructor called" << std::endl;
-	checkGrade();
+	try {checkGrade();}
+	catch (std::exception &e) {std::cerr << e.what() << std::endl;}
 }
 
 Form::Form(const Form &obj): _name(obj._name), _isSigned(obj._isSigned),
@@ -36,6 +36,7 @@ Form::Form(const Form &obj): _name(obj._name), _isSigned(obj._isSigned),
 
 Form	&Form::operator=(const Form &obj)
 {
+	(void)obj;
 	std::cout << "Form: Assignment operator called" << std::endl;
 	return *this;
 }
@@ -50,12 +51,12 @@ std::string	Form::getName(void) const
 	return _name;
 }
 
-size_t	Form::getRequiredGradeToSign(void) const
+int	Form::getRequiredGradeToSign(void) const
 {
 	return _requiredGradeToSign;
 }
 	
-size_t	Form::getRequiredGradeToExecute(void) const
+int	Form::getRequiredGradeToExecute(void) const
 {
 	return _requiredGradeToExecute;
 }
@@ -70,15 +71,15 @@ void	Form::checkGrade(void) const
 	if (_requiredGradeToSign > _minGrade 
 		|| _requiredGradeToExecute > _minGrade )
 		throw (GradeTooLowException());
-	else if (_requiredGradeToSign < _maxGrade 
+	if (_requiredGradeToSign < _maxGrade 
 		|| _requiredGradeToExecute < _maxGrade )
 		throw (GradeTooHighException());
 }
 
 void	Form::beSigned(const Bureaucrat &obj)
 {
-	size_t	grade = obj.getGrade();
-	
+	int	grade = obj.getGrade();
+
 	if (grade <= _requiredGradeToSign)
 		_isSigned = true;
 	else
@@ -95,14 +96,15 @@ void	Form::checkIfExecutable(const Bureaucrat &executor) const
 
 std::ostream	&operator<<(std::ostream &stream, const Form &obj)
 {
-	stream << "Form name: " << obj.getName() << std::endl;
+	stream << "\033[36m" <<
+		"Form name: " << obj.getName() << std::endl;
 	stream << "Required grade to sign: " << obj.getRequiredGradeToSign()
 		<< std::endl;
 	stream << "Required grade to execute: " << obj.getRequiredGradeToExecute()
 		<< std::endl;
 	stream << "Status: "
 		<< (obj.getStatus() == true ? "signed" : "not signed")
-		<< std::endl;
+		<< "\033[0m" << std::endl;
 
 	return stream;
 }

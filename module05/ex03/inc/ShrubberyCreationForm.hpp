@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 22:28:28 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/21 06:57:00 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/08 17:58:35 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ class ShrubberyCreationForm : public Form
 	ShrubberyCreationForm();
 	ShrubberyCreationForm(const std::string &target);
 	ShrubberyCreationForm(const ShrubberyCreationForm &obj);
-	~ShrubberyCreationForm();
+	virtual	~ShrubberyCreationForm();
 	ShrubberyCreationForm	&operator=(const ShrubberyCreationForm &obj);
 
-	const std::string	&getTarget(void) const;
+	virtual const std::string	&getTarget(void) const;
 	virtual void		execute(const Bureaucrat &executor) const;
 
 

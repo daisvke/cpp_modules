@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 22:39:29 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/22 02:14:02 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/08 18:42:20 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ Intern::Intern(const Intern &obj)
 
 Intern	&Intern::operator=(const Intern &obj)
 {
+	(void)obj;
 	std::cout << "Intern: Assignment operator called" << std::endl;
 	return *this;
 }
@@ -38,15 +39,16 @@ Form	*Intern::makeForm(std::string formName, const std::string target)
 {
 	Form	*form;
 
-	formName == "SC" ? form = new ShrubberyCreationForm(target)
-		: (formName == "RR" ? form = new RobotomyRequestForm(target)
-		: (formName == "PP" ? form = new PresidentialPardonForm(target)
+	formName == "shrubbery creation" ? form = new ShrubberyCreationForm(target)
+		: (formName == "robotomy request" ? form = new RobotomyRequestForm(target)
+		: (formName == "presidential pardon" ? form = new PresidentialPardonForm(target)
 		: form = 0));
 
 	if (form == 0)
-		std::cout << "Error: Unknown form name \'" << formName << "\'" << std::endl;
+		std::cout << "\033[31mError: Unknown form name \'" << formName << "\'" <<
+			"\033[0m" << std::endl;
 	else
-		std::cout << formName << " generated" << std::endl;
+		std::cout << "\033[32mIntern creates " << formName << "\033[0m" << std::endl;
 
 	return form;
 }

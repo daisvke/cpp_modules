@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 03:12:37 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/07/08 03:44:47 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/08 17:44:33 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class	Form
 		const int requiredGradeToExecute);
 	Form(const Form &obj);
 	Form	&operator=(const Form &obj);
-	~Form();
+	virtual	~Form();
 
 	std::string	getName(void) const;
 	int		getRequiredGradeToSign(void) const;

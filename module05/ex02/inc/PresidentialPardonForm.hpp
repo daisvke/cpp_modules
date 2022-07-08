@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 22:24:47 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/21 07:18:50 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/08 18:11:00 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ class PresidentialPardonForm : public Form
 	PresidentialPardonForm();
 	PresidentialPardonForm(const std::string &target);
 	PresidentialPardonForm(const PresidentialPardonForm &obj);
-	~PresidentialPardonForm();
+	virtual	~PresidentialPardonForm();
 	PresidentialPardonForm	&operator=(const PresidentialPardonForm &obj);
 
-	const std::string	&getTarget(void) const;
+	virtual const std::string	&getTarget(void) const;
 	virtual void		execute(const Bureaucrat &executor) const;
 
 

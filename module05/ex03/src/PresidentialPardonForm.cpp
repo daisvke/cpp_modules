@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 22:25:00 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/21 22:24:59 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/08 18:11:00 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ PresidentialPardonForm::PresidentialPardonForm(const std::string &target)
 }
 
 PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &obj)
-	: Form("PresidentialPardonForm", 25, 5), _target(obj.getTarget())
+	: Form("PresidentialPardonForm", 25, 5), _target(obj._target)
 {
 	std::cout << "PresidentialPardonForm: Copy constructor called" << std::endl;
 	*this = obj;
@@ -38,6 +38,7 @@ PresidentialPardonForm::~PresidentialPardonForm()
 
 PresidentialPardonForm &PresidentialPardonForm::operator=(PresidentialPardonForm const & obj)
 {
+	(void)obj;
 	std::cout << "PresidentialPardonForm: Assignement operator called" << std::endl;
 	return *this;
 }
@@ -50,5 +51,7 @@ const std::string	&PresidentialPardonForm::getTarget(void) const
 void	PresidentialPardonForm::execute(const Bureaucrat &executor) const
 {
 	checkIfExecutable(executor);
-	std::cout << _target << " has been pardoned by Zaphod Beeblebrox" << std::endl;
+	std::cout <<
+		"\033[35m" << _target << " has been pardoned by Zaphod Beeblebrox" <<
+		"\033[0m" << std::endl;
 }
