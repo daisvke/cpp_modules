@@ -1,11 +1,11 @@
 #	 E X E C U T A B L E  N A M E	 #
 
-NAME				=	convert
+NAME				=	converter
 
 #			C C  F L A G S			  #
 
-CC					=	clang++
-CFLAGS				=	-Wall -Werror -Wextra -std=c++98
+CXX					=	c++
+CXXFLAGS			=	-Wall -Werror -Wextra -std=c++98
 INC					=	-I inc/
 
 #######################################
@@ -26,6 +26,11 @@ OBJ_DIR				=	obj/
 OBJ_FILES			=	$(SRC_FILES:.cpp=.o)
 OBJ					=	$(addprefix $(OBJ_DIR), $(OBJ_FILES))
 
+#			I N C .  F I L E S		  #
+
+INC_DIR				=	inc/
+INC_FILES			=	Converter.hpp
+INCS				=	$(addprefix $(INC_DIR), $(INC_FILES))
 
 #######################################
 #				R U L E S			  #
@@ -36,11 +41,11 @@ OBJ					=	$(addprefix $(OBJ_DIR), $(OBJ_FILES))
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) -o $(NAME) $(OBJ)
+	$(CXX) -o $(NAME) $(OBJ)
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.cpp
+$(OBJ_DIR)%.o: $(SRC_DIR)%.cpp $(INCS)
 	mkdir -p $(OBJ_DIR)
-	$(CC) $(INC) $(C_FLAGS) -o $@ -c $<
+	$(CXX) $(INC) $(CXXFLAGS) -o $@ -c $<
 
 
 # C L E A N  &  O T H E R  R U L E S  #
@@ -56,5 +61,3 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
-
-

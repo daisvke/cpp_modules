@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 23:31:36 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/06/01 07:43:16 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/08 19:27:34 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <string>
 # include <limits>
 # include <cmath>
+# include <stdlib.h>
 
 class	Converter
 {
@@ -51,7 +52,7 @@ class	Converter
 	void	fromInt(const char *src);
 	void	fromFloat(const char *src);
 	void	printToCharError(void) const;
-	void	printResult(Converter res, const std::string &src) const;
+	void	printResult(const std::string &src) const;
 
 	class	UnhandledTypeException: public std::exception
 	{

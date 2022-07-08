@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 23:31:21 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/30 10:15:40 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/08 19:22:21 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	main(int argc, char *argv[])
 		try {convert.detectError();}
 		catch (std::exception &e) {handleError(e.what());};
 		convert.convert(argv[1]);
-		convert.printResult(convert, argv[1]);
+		convert.printResult(argv[1]);
 		return EXIT_SUCCESS;
 	}
 	std::cerr << "Invalid number of arguments!" << std::endl;

@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 23:31:18 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/06/01 07:42:46 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/08 20:52:23 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,18 @@ Converter::Converter(): _srcType(0), _dotZero(false), _toChar(0)
 
 Converter	&Converter::operator=(const Converter &obj)
 {
+	(void)obj;
 	return *this;
 }
 
 Converter::Converter(const Converter &obj)
 {
+	_srcType = obj._srcType;
+	_dotZero = obj._dotZero;
+	_toChar = obj._toChar;
+	_toInt = obj._toInt;
+	_toFloat = obj._toFloat;
+	_toDouble = obj._toDouble;
 	*this = obj;
 }
 
@@ -35,12 +42,11 @@ int	Converter::checkLimits(const std::string &src, int type) const
 	if (_srcType != _char)
 	{
 		double	d;
-		bool	error = false;
 
-		try { d = std::stod(src, NULL); }
+		try { d = atof(src.c_str()); }
 		catch (const std::out_of_range& oor) { return _error; }
 
-		d = std::stod(src, NULL);
+		d = atof(src.c_str());
 		if ((type == _int && d < getMinMax<int>(_min))
 			|| (type == _int && d > getMinMax<int>(_max))
 			|| (type == _float && d < getMinMax<float>(_min))
@@ -145,7 +151,7 @@ void	Converter::fromInt(const char *src)
 	}
 	_toInt = atoi(src);
 	_toFloat = atof(src);
-	_toDouble = std::stod(src);
+	_toDouble = atof(src);
 }
 
 void	Converter::fromFloat(const char *src)
@@ -164,7 +170,7 @@ void	Converter::fromFloat(const char *src)
 	}
 	_toInt = atoi(src);
 	_toFloat = atof(src);
-	_toDouble = std::stod(src, NULL);
+	_toDouble = atof(src);
 }
 
 void	Converter::convert(const char *src)
@@ -187,7 +193,7 @@ void	Converter::printToCharError(void) const
 		std::cout << "Non displayable";
 }
 
-void	Converter::printResult(Converter res, const std::string &src) const
+void	Converter::printResult(const std::string &src) const
 {
 	bool	dotZero;
 
