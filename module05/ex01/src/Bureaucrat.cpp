@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 23:37:44 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/07/07 19:02:07 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/08 05:37:24 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ Bureaucrat::Bureaucrat(const std::string name, const int grade)
 	: _name(name), _grade(grade)
 {
 	std::cout << "Bureaucrat: Parameterized constructor called" << std::endl;
-	checkGrade();
+
+	try {checkGrade();}
+	catch (std::exception &e) {std::cerr << e.what() << std::endl;}
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &obj)
@@ -63,13 +65,21 @@ void	Bureaucrat::checkGrade(void) const
 void	Bureaucrat::incremGrade(void)
 {
 	--_grade;
-	checkGrade();
+	try {checkGrade();}
+	catch (std::exception &e) {
+		std::cerr << e.what() << std::endl;
+		++_grade;
+	}
 }
 
 void	Bureaucrat::decremGrade(void)
 {
 	++_grade;
-	checkGrade();
+	try {checkGrade();}
+	catch (std::exception &e) {
+		std::cerr << e.what() << std::endl;
+		--_grade;
+	}
 }
 
 void	Bureaucrat::signForm(Form &form)

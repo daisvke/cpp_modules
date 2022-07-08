@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 23:37:44 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/07/07 19:02:07 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/08 05:34:01 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ Bureaucrat::Bureaucrat(const std::string name, const int grade)
 	: _name(name), _grade(grade)
 {
 	std::cout << "Bureaucrat: Parameterized constructor called" << std::endl;
-	checkGrade();
+	try {checkGrade();}
+	catch (std::exception &e) {std::cerr << e.what() << std::endl;}
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &obj)
@@ -63,13 +64,21 @@ void	Bureaucrat::checkGrade(void) const
 void	Bureaucrat::incremGrade(void)
 {
 	--_grade;
-	checkGrade();
+	try {checkGrade();}
+	catch (std::exception &e) {
+		std::cerr << e.what() << std::endl;
+		++_grade;
+	}
 }
 
 void	Bureaucrat::decremGrade(void)
 {
 	++_grade;
-	checkGrade();
+	try {checkGrade();}
+	catch (std::exception &e) {
+		std::cerr << e.what() << std::endl;
+		--_grade;
+	}
 }
 
 void	Bureaucrat::signForm(Form &form)
@@ -79,6 +88,7 @@ void	Bureaucrat::signForm(Form &form)
 	{
 		std::cerr << getName() << " couldn't sign " << form.getName()
 			<< " form because " << e.what() << std::endl;
+		return ;
 	}
 	std::cerr << "\033[32m" << getName() << " signed " << form.getName()
 		<< " form " << "\033[0m" << std::endl;
@@ -87,10 +97,11 @@ void	Bureaucrat::signForm(Form &form)
 void	Bureaucrat::executeForm(Form const &form)
 {
 	try {form.execute(*this);}
-	catch (std::string const &errMessage)
+	catch (std::exception &e)
 	{
 		std::cerr << getName() << " couldn't execute " << form.getName()
-			<< " form because " << errMessage << std::endl;
+			<< " form because " << e.what() << std::endl;
+		return ;
 	}
 	std::cerr << getName() << " executed " << form.getName()
 		<< " form " << std::endl;

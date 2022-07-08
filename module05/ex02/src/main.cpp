@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 23:37:42 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/21 22:31:19 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/08 05:11:10 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,66 +20,68 @@ int	main(void)
 {
 	Bureaucrat	a("A", 144);
 	ShrubberyCreationForm	scf("mytarget");
-	RobotomyRequestForm	rrf(a.getName());
 
 	std::cout << std::endl;
 	// ShrubberyCreationForm
+	std::cout << "=============SHRUBERRY==============" << std::endl;
 
-	try {a.signForm(scf);}
-	catch (std::exception &e)
-	{
-		std::cout << "A couldn't sign form: " << e.what() << std::endl;
-	}
-	
-	try {a.executeForm(scf);}
-	catch (std::exception &e)
-	{
-		std::cout << "A couldn't execute form: " << e.what() << std::endl;
-	}
-	for (size_t i(0); i < 10; ++i)
-		a.incremGrade();
 	std::cout << a << std::endl;
-	
-	try {a.executeForm(scf);}
-	catch (std::exception &e)
-	{
-		std::cout << "A couldn't execute form: " << e.what() << std::endl;
-	}
+	std::cout << scf << std::endl;
 
+	a.signForm(scf);
+	a.executeForm(scf);
+
+	for (size_t i(0); i < 10; ++i)
+	{
+		std::cout << "Incrementing A...\t" << i + 1 << std::endl;
+		a.incremGrade();
+	}
+	std::cout << a << std::endl;
+	std::cout << scf << std::endl;
+	
+	a.executeForm(scf);
 	std::cout << std::endl;
-	// RobotomyRequestForm
 
-	try {a.signForm(rrf);}
-	catch (std::exception &e)
-	{
-		std::cout << "A couldn't sign form: " << e.what() << std::endl;
-	}
-	
-	try {a.executeForm(rrf);}
-	catch (std::exception &e)
-	{
-		std::cout << "A couldn't execute form: " << e.what() << std::endl;
-	}
+
+	// RobotomyRequestForm
+	std::cout << "=============ROBOTOMY==============" << std::endl;
+
+	RobotomyRequestForm		rrf(a.getName());
+
+	std::cout << a << std::endl;
+	std::cout << rrf << std::endl;
+
+	a.signForm(rrf);
+	a.executeForm(rrf);
 	std::cout << std::endl;
 
 	Bureaucrat	b("B", 1);
-	try {b.signForm(rrf);}
-	catch (std::exception &e)
-	{
-		std::cout << "B couldn't sign form: " << e.what() << std::endl;
-	}
-	
-	try {b.executeForm(rrf);}
-	catch (std::exception &e)
-	{
-		std::cout << "B couldn't execute form: " << e.what() << std::endl;
-	}
+	std::cout << b << std::endl;
+
+	b.signForm(rrf);
+	b.executeForm(rrf);
+	b.executeForm(rrf);
 	std::cout << std::endl;
-	try {b.executeForm(rrf);}
-	catch (std::exception &e)
-	{
-		std::cout << "B couldn't execute form: " << e.what() << std::endl;
-	}
+
+
+	// PresendentialPardonForm
+	std::cout << "=============PRESIDENTIAL==============" << std::endl;
+
+	Bureaucrat	c("C", 6);
+	PresidentialPardonForm	ppf(c.getName());
+
+	std::cout << c << std::endl;
+	std::cout << ppf << std::endl;
+
+	c.executeForm(ppf);
+	c.signForm(ppf);
+	c.executeForm(ppf);
+	
+	std::cout << "Incrementing C..." << std::endl;
+	c.incremGrade();
+	std::cout << c << std::endl;
+
+	c.executeForm(ppf);
 	std::cout << std::endl;
 
 	return 0;

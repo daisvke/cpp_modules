@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 23:37:42 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/07/06 06:03:02 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/08 05:50:35 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,45 +26,18 @@ int	main(void)
 	std::cout << std::endl;
 	std::cout << a << std::endl;
 
-	try {Bureaucrat	b("B", 151);}
-	catch (std::exception &e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-
-	std::cout << std::endl;
-
-	try {Bureaucrat	c("C", -150);}
-	catch (std::exception &e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	
-
-
+	Bureaucrat	b("B", 151);
+	Bureaucrat	err("C", -150);
 	Bureaucrat	c("C", 150);
 	std::cout << c << std::endl;
 
 	std::cout << COLOR(CYAN, "decrementing ") << c.getName() << "..." << std::endl;
-	try
-	{
-		c.decremGrade();
-	}
-	catch (std::exception &e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	std::cout << std::endl;
+	c.decremGrade();
+	std::cout << c << std::endl;
 
 	std::cout << COLOR(GREEN, "incrementing ") << c.getName() << "..." << std::endl;
-	try
-	{
-		c.incremGrade();
-	}
-	catch (std::exception &e)
-	{
-		std::cout << e.what() << std::endl;
-	}
+	c.incremGrade();
+	std::cout << c << std::endl;
 
 	return 0;
 }

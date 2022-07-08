@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 23:37:42 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/07/07 18:57:17 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/08 05:29:38 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,65 +20,30 @@ int	main(void)
 	std::cout << std::endl;
 
 	std::cout << "Creating B..." << std::endl;
-	try {Bureaucrat	b("B", 151);}
-	catch (std::exception &e)
-	{
-		std::cerr << "-> " << e.what() << std::endl;
-	}
+	Bureaucrat	b("B", 151);
 
 	std::cout << "Creating form f..." << std::endl;
-	try { Form f("f", -1, 15);}
-	catch (std::exception &e)
-	{
-		std::cerr << "-> " << e.what() << std::endl;
-	}
-	std::cout << std::endl;
-
+	Form f1("f", -1, 15);
 	Bureaucrat	c("C", 150);
+	std::cout << c << std::endl;
 
 	std::cout << "Decrementing c..." << std::endl;
-	std::cout << c << std::endl;
-	std::cout << std::endl;
-	try {c.decremGrade();}
-	catch (std::exception &e)
-	{
-		std::cerr << "-> " << e.what() << std::endl;
-	}
-	std::cout << std::endl;
-
+	c.decremGrade();
+	std::cout << "Incrementing c..." << std::endl;
 	c.incremGrade();
-	c.incremGrade();
-	std::cout << c << std::endl;
-	std::cout << std::endl;
-
-	Form	f("F", 148, 147);
-	Bureaucrat	d("D", 1);
-	d.signForm(f);
-	std::cout << d << std::endl;
-	std::cout << f << std::endl;
-	std::cout << std::endl;
-
-	std::cout << c << std::endl;
-	std::cout << f << std::endl;
-	std::cout << std::endl;
-	std::cout << "C signing form f..." << std::endl;
-	try {c.signForm(f);}
-	catch (std::exception &e)
-	{
-		std::cerr << "-> " << e.what() << std::endl;
-	}
-	std::cout << std::endl;
-
 	std::cout << "Incrementing c..." << std::endl;
 	c.incremGrade();
 	std::cout << c << std::endl;
+
+	Form	f("F", 148, 147);
+	Bureaucrat	d("D", 1);
+	std::cout << d << std::endl;
 	std::cout << f << std::endl;
+	d.signForm(f);
 	std::cout << std::endl;
-	try {c.signForm(f);}
-	catch (std::exception &e)
-	{
-		std::cerr << "-> " << e.what() << std::endl;
-	}
+
+	c.signForm(f);
+	std::cout << std::endl;
 
 	return 0;
 }

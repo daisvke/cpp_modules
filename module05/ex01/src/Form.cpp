@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 04:40:05 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/07/07 19:03:08 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/08 05:17:25 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ Form::Form(const std::string name, const int requiredGradeToSign,
 	_requiredGradeToSign(requiredGradeToSign), _requiredGradeToExecute(requiredGradeToExecute)
 {
 	std::cout << "Form: Parameterized constructor called" << std::endl;
-	checkGrade();
+	try {checkGrade();}
+	catch (std::exception &e) {std::cerr << e.what() << std::endl;}
 }
 
 Form::Form(const Form &obj): _name(obj._name), _isSigned(obj._isSigned),

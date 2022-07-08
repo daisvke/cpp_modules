@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 23:37:45 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/21 06:56:31 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/08 03:00:48 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ class	Bureaucrat
 	public:
 
 	Bureaucrat();
-	Bureaucrat(const std::string name, const size_t grade);
+	Bureaucrat(const std::string name, const int grade);
 	Bureaucrat(const Bureaucrat &obj);
 	Bureaucrat	&operator=(const Bureaucrat &obj);
 	~Bureaucrat();
 
 	std::string	getName(void) const;
-	size_t		getGrade(void) const;
+	int			getGrade(void) const;
 	void		checkGrade(void) const;
 	void		incremGrade(void);
 	void		decremGrade(void);
@@ -44,7 +44,7 @@ class	Bureaucrat
 		GradeTooHighException() throw() {}
 		virtual const char	*what() const throw()
 		{
-			return "The grade is too high!";
+			return "\033[31mBureaucrat: The grade is too high!\033[0m";
 		}
 		virtual ~GradeTooHighException() throw() {}
 	};
@@ -56,7 +56,7 @@ class	Bureaucrat
 		GradeTooLowException() throw() {}
 		virtual const char	* what() const throw()
 		{
-			return "The grade is too low!";
+			return "\033[31mBureaucrat: The grade is too low!\033[0m";
 		}
 		virtual ~GradeTooLowException() throw() {}
 	};
@@ -65,9 +65,9 @@ class	Bureaucrat
 	private:
 
 	const std::string	_name;
-	size_t				_grade;
-	static const size_t	_minGrade = 150;
-	static const size_t	_maxGrade = 1;
+	int					_grade;
+	static const int	_minGrade = 150;
+	static const int	_maxGrade = 1;
 };
 
 std::ostream	&operator<<(std::ostream &stream, const Bureaucrat &obj);

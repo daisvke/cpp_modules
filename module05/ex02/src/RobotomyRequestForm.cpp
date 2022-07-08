@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 22:24:58 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/21 22:33:41 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/08 04:58:51 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ RobotomyRequestForm::RobotomyRequestForm(const std::string &target)
 }
 
 RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &obj)
-	: Form("RobotomyRequestForm", 72, 45), _target(obj.getTarget())
+	: Form("RobotomyRequestForm", 72, 45), _target(obj._target)
 {
 	std::cout << "RobotomyRequestForm: Copy constructor called" << std::endl;
 	*this = obj;
@@ -38,6 +38,7 @@ RobotomyRequestForm::~RobotomyRequestForm()
 
 RobotomyRequestForm &RobotomyRequestForm::operator=(RobotomyRequestForm const & obj)
 {
+	(void)obj;
 	std::cout << "RobotomyRequestForm: Assignement operator called" << std::endl;
 	return *this;
 }
@@ -52,10 +53,12 @@ void	RobotomyRequestForm::execute(const Bureaucrat &executor) const
 	static int	i;
 
 	checkIfExecutable(executor);
-	std::cout << "DDDDRRRRRRRRRRRRRRRRRHHHHHHHH" << std::endl;
+
+	std::cout << "\033[35mDDDDRRRRRRRRRRRRRRRRRHHHHHHHH" << std::endl;
 	if (i % 2 == 0)
-		std::cout << _target << " has been successfully robotomized!" << std::endl;
+		std::cout << _target << " has been successfully robotomized!" <<
+		"\033[0m" << std::endl;
 	else
-		std::cout << "ERROR: The robotomy has failed...!" << std::endl;
+		std::cout << "ERROR: The robotomy has failed...!\033[0m" << std::endl;
 	++i;
 }

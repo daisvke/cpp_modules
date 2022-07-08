@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 22:24:56 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/21 22:36:56 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/08 04:55:43 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target)
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &obj)
-	: Form("ShrubberyCreationForm", 145, 137), _target(obj.getTarget())
+	: Form("ShrubberyCreationForm", 145, 137), _target(obj._target)
 {
 	std::cout << "ShrubberyCreationForm: Copy constructor called" << std::endl;
 	*this = obj;
@@ -38,6 +38,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(ShrubberyCreationForm const & obj)
 {
+	(void)obj;
 	std::cout << "ShrubberyCreationForm: Assignement operator called" << std::endl;
 	return *this;
 }
@@ -69,7 +70,7 @@ void	ShrubberyCreationForm::execute(const Bureaucrat &executor) const
 	}
 
 	size_t	trunk = (size * 10) / 100;
-	trunk = trunk % 2 == 0 ? ++trunk : trunk;
+	trunk = trunk % 2 == 0 ? trunk + 1 : trunk;
 	space = (size / 2) - (trunk / 2);
 
 	for (size_t i(0); i < trunk; ++i)
@@ -80,5 +81,7 @@ void	ShrubberyCreationForm::execute(const Bureaucrat &executor) const
 
 	outfile.close();
 
-	std::cout << "Generated " << _target << "_shrubbery file!" << std::endl;
+	std::cout <<
+		"\033[35mGenerated " << _target << "_shrubbery file!" <<
+		"\033[0m" << std::endl;
 }
