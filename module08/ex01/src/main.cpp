@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 01:02:45 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/06/03 09:23:38 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/09 22:15:13 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int main()
 
 	std::cout << "Filling array from sp2 while leaving 4 blocks for the next addition..."
 		<< std::endl;
-	for (size_t i(0); i < sp2.getMax() - 4; ++i)
+	for (int i(0); i < sp2.getMax() - 4; ++i)
 		sp2.addNumber(rand());	
 
 	std::cout << sp2 << std::endl;
