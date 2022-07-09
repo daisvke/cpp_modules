@@ -37,7 +37,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(CXX) -o $(NAME) $(OBJ)
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.cpp
+$(OBJ_DIR)%.o: $(SRC_DIR)%.cpp inc/Serialization.hpp
 	mkdir -p $(OBJ_DIR)
 	$(CXX) $(INC) $(CXXFLAGS) -o $@ -c $<
 
