@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 23:31:36 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/07/08 19:27:34 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/09 15:55:51 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <iostream>
 # include <string>
+# include <stddef.h>
 # include <limits>
 # include <cmath>
 # include <stdlib.h>
@@ -33,10 +34,10 @@ class	Converter
 	template<typename T>
 	double	getMinMax(int limit) const
 	{
-		double	res;
+		double	res = 0;
 
 		if (limit == _min)
-			res = std::numeric_limits<T>::lowest();
+			res = std::numeric_limits<T>::min();
 		else if (limit == _max)
 			res = std::numeric_limits<T>::max();
 		return (res);
