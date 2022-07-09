@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 23:31:36 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/07/09 15:55:51 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/09 17:00:08 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,15 @@ class	Converter
 	{
 		double	res = 0;
 
+		res = std::numeric_limits<T>::max();
 		if (limit == _min)
-			res = std::numeric_limits<T>::min();
-		else if (limit == _max)
-			res = std::numeric_limits<T>::max();
+		{
+			res += 1;
+			res *= -1;
+		}
+		else if (limit == _max) {}
+		else
+			res = 0;
 		return (res);
 	}
 
@@ -83,6 +88,7 @@ class	Converter
 	private:
 
 	int		_srcType;
+	bool	_dot;
 	bool	_dotZero;
 	
 	char	_toChar;

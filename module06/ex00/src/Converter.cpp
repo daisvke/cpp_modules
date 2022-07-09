@@ -6,13 +6,13 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 23:31:18 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/07/08 20:52:23 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/09 17:00:44 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Converter.hpp"
 
-Converter::Converter(): _srcType(0), _dotZero(false), _toChar(0)
+Converter::Converter(): _srcType(0), _dot(false), _dotZero(false), _toChar(0)
 {
 }
 
@@ -61,7 +61,7 @@ bool	Converter::detectPseudoLiterals(const std::string &src)
 	std::string	pseudoLiterals[6] = {"-inff", "+inff", "nanf",
 									"-inf", "+inf", "nan"};
 
-	for (size_t i=0; i < 6; ++i)
+	for (size_t i(0); i < 6; ++i)
 		if (src == pseudoLiterals[i])
 			return true;
 	return false;
@@ -71,7 +71,7 @@ void	Converter::detectDotZero(std::string src, size_t pos)
 {
 	bool	foundNotZero = false;
 
-	for (size_t i=pos; src[i]; ++i)
+	for (size_t i(pos); src[i]; ++i)
 		if (src[i] != '0' && src[i] != 'f')
 			foundNotZero = true;
 	if (foundNotZero == false)
@@ -84,7 +84,7 @@ void	Converter::detectType(std::string src)
 	size_t	len = src.length();
 	size_t	dotPos;
 
-	for (size_t i=0; src[i]; ++i)
+	for (size_t i(0); src[i]; ++i)
 	{
 		if (src[i] < ' ')
 			_srcType |= _nonPrintable;
@@ -95,6 +95,7 @@ void	Converter::detectType(std::string src)
 		if (src[i] == '.')
 		{
 			dotPos = i;
+			_dot = true;
 			++dotCount;
 		}
 		if (src[i] == 'f')
@@ -197,7 +198,7 @@ void	Converter::printResult(const std::string &src) const
 {
 	bool	dotZero;
 
-	dotZero = !_dotZero && (_srcType == _double || _srcType == _float);
+	dotZero = _dot && !_dotZero;
 	std::cout << "char:\t\t";
 	if (_srcType & _toCharError)
 		printToCharError();
@@ -214,7 +215,7 @@ void	Converter::printResult(const std::string &src) const
 	
 	std::cout << "float:\t\t";
 	if (checkLimits(src, _float) == _ok)
-		std::cout << _toFloat << (dotZero ? "" : ".0") << "f";
+		std::cout << _toFloat << (_dot && dotZero ? "" : ".0") << "f";
 	else
 		std::cout << "impossible";
 	std::cout << std::endl;
