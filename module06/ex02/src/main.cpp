@@ -6,11 +6,12 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 03:48:44 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/06/01 04:22:11 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/09 18:03:18 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <stdlib.h>
 #include "Base.hpp"
 #include "A.hpp"
 #include "B.hpp"
@@ -20,42 +21,55 @@ Base	*generate(void)
 {
 	int	random = rand() % 10;
 
+	std::cout << "Generated: ";
 	if (random <= 3)
+	{
+		std::cout << "\033[31mA\033[0m" << std::endl; 
 		return new A();
+	}
 	else if (random <= 6)
+	{
+		std::cout << "\033[32mB\033[0m" << std::endl; 
 		return new B();
+	}
 	else
+	{
+		std::cout << "\033[33mC\033[0m" << std::endl; 
 		return new C();
+	}
 }
 
 void	identify(Base* p)
 {
-	std::cout << "pointer: ";
-	std::cout << ( dynamic_cast<A *>(p) ? "A" : "");
-	std::cout << ( dynamic_cast<B *>(p) ? "B" : "");
-	std::cout << ( dynamic_cast<C *>(p) ? "C" : "");
+	std::cout << "Pointer: ";
+	std::cout << ( dynamic_cast<A *>(p) ? "\033[31mA\033[0m" : "");
+	std::cout << ( dynamic_cast<B *>(p) ? "\033[32mB\033[0m" : "");
+	std::cout << ( dynamic_cast<C *>(p) ? "\033[33mC\033[0m" : "");
 	std::cout << std::endl;
 }
 
 void	identify(Base& p)
 {
-	std::cout << "reference: ";
+	std::cout << "Reference: ";
 	try
 	{
 		A &a = dynamic_cast<A &>(p);
-		std::cout << "A";
+		std::cout << "\033[31mA\033[0m";
+		(void)a;
 	}
 	catch (std::exception &e) {}
 	try
 	{
 		B &b = dynamic_cast<B &>(p);
-		std::cout << "B";
+		std::cout << "\033[32mB\033[0m";
+		(void)b;
 	}
 	catch (std::exception &e) {}
 	try
 	{
 		C &c = dynamic_cast<C &>(p);
-		std::cout << "C";
+		std::cout << "\033[33mC\033[0m";
+		(void)c;
 	}
 	catch (std::exception &e) {}
 	std::cout << std::endl;
@@ -66,7 +80,7 @@ int	main(void)
 	Base	*obj;
 
 	std::cout << std::endl;
-	std::cout << "Identifying from pointers..." << std::endl;
+	std::cout << "\033[36mIdentifying from pointers...\033[0m" << std::endl;
 	std::cout << std::endl;
 
 	obj = generate();
@@ -95,7 +109,7 @@ int	main(void)
 	obj = 0;
 
 	std::cout << std::endl;
-	std::cout << "Identifying from references..." << std::endl;
+	std::cout << "\033[36mIdentifying from references...\033[0m" << std::endl;
 	std::cout << std::endl;
 
 	obj = generate();

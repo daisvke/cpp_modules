@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 01:22:55 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/06/02 05:43:51 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/09 19:31:10 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ class	Array
 	{
 		std::cout << "Size constructor called" << std::endl;
 		_array = new T[n];
+		for (size_t i(0); i < n; ++i)
+			_array[i] = 0;
 	}
 
 	Array<T>(const Array<T> &obj)
@@ -51,8 +53,9 @@ class	Array
 
 	T	&operator[](const int i) const
 	{
-		if (i < 0 || i >= _size)
-			throw std::overflow_error("Error: index is out of bounds!");
+		if (i < 0 || (size_t)i >= _size)
+			throw std::overflow_error(
+					"\033[31mError: index is out of bounds!\033[0m");
 		return _array[i];
 	}
 
@@ -74,8 +77,5 @@ class	Array
 	unsigned int	_size;
 	T				*_array;
 };
-
-template<typename T>
-std::ostream	&operator<<(std::ostream &stream, const Array<T> &obj);
 
 #endif

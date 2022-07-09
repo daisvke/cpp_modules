@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 03:48:43 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/31 05:37:42 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/09 17:53:57 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,4 +14,5 @@
 
 Base::~Base()
 {
+	std::cout << "Base Destructor called" << std::endl;
 }

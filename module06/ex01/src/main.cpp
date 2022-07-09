@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 03:24:54 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/05/31 03:45:30 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/09 18:30:17 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,30 @@ int	main(void)
 	uintptr_t	serialized;
 	Data		*deserialized;
 
+	std::cout << "\033[36mTest #1....\033[0m" << std::endl;
 	toSerialize.data = 42;
 	std::cout << "original data: " << toSerialize.data << std::endl;
 	serialized = serialize(&toSerialize);
 	deserialized = deserialize(serialized);
-	std::cout << "raw data: " << deserialized->data << std::endl;
+	std::cout << "deserialized data: " << deserialized->data
+		<< std::endl << std::endl;
+
+
+	std::cout << "\033[36mTest #2....\033[0m" << std::endl;
+	toSerialize.data = 12345678;
+	std::cout << "original data: " << toSerialize.data << std::endl;
+	serialized = serialize(&toSerialize);
+	deserialized = deserialize(serialized);
+	std::cout << "deserialized data: " << deserialized->data
+		<< std::endl << std::endl;
+
+	std::cout << "\033[36mTest #3....\033[0m" << std::endl;
+	toSerialize.data = 0;
+	std::cout << "original data: " << toSerialize.data << std::endl;
+	serialized = serialize(&toSerialize);
+	deserialized = deserialize(serialized);
+	std::cout << "deserialized data: " << deserialized->data
+		<< std::endl << std::endl;
+
+	return 0;
 }
