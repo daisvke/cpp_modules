@@ -5,7 +5,7 @@ NAME				=	span
 #			C C  F L A G S			  #
 
 CXX					=	c++
-CXXFLAGS			=	-Wall -Werror -Wextra -std=c++98
+CXXFLAGS			=	-Wall -Werror -Wextra -std=c++98 -g
 INC					=	-I inc/
 
 #######################################

@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 01:02:43 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/06/03 09:09:36 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/10 20:28:48 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,18 @@ class	Span
 	Span();
 	Span(unsigned int max);
 	Span(const Span &obj);
-	Span	&operator=(const Span &obj);
+	Span		&operator=(const Span &obj);
+	const int	&operator[](const int i) const;
 	~Span();
 
 	std::vector<int>	getArray(void) const;
 
-	int		getMax(void) const;
-	void	addNumber(int nbr);
-	void	addNbrByIteratorRange(std::vector<int>::iterator begin,
+	int			getMax(void) const;
+	void		addNumber(int nbr);
+	void		addNbrByIteratorRange(std::vector<int>::iterator begin,
 		std::vector<int>::iterator end);
-	int		shortestSpan(void) const;
-	int		longestSpan(void) const;
+	size_t		shortestSpan(void) const;
+	size_t		longestSpan(void) const;
 
 	class	InvalidArraySizeException: public std::exception
 	{
@@ -44,7 +45,7 @@ class	Span
 		InvalidArraySizeException() throw() {}
 		virtual const char	*what() const throw()
 		{
-			return "The array size is incompatible with this method!";
+			return "\033[31mThe array size is incompatible with this method!\033[0m";
 		}
 		~InvalidArraySizeException() throw() {}
 	};
