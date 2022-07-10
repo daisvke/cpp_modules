@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 23:03:48 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/07/09 22:05:48 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/10 21:03:50 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@
 template<typename T>
 typename T::iterator	easyfind(T &container, int toFind)
 {
-	typename T::iterator	res = find(
+	typename T::iterator	res;
+	res = find(
 			container.begin(), container.end(), toFind
 			);
 

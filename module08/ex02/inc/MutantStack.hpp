@@ -6,7 +6,7 @@
 /*   By: dtanigaw <dtanigaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 09:26:59 by dtanigaw          #+#    #+#             */
-/*   Updated: 2022/06/07 01:17:15 by dtanigaw         ###   ########.fr       */
+/*   Updated: 2022/07/10 20:41:39 by dtanigaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,13 @@ class	MutantStack: public std::stack<T>
 	public:
 
 	MutantStack<T>() {}
-	MutantStack<T>(const MutantStack<T> &obj) { *this = obj; }
-	~MutantStack<T>() {};
+	MutantStack<T>(const MutantStack<T> &obj) {
+		(void)obj;
+		*this = obj;
+	}
+	virtual	~MutantStack<T>() {};
 	MutantStack<T>	&operator=(const MutantStack<T> &obj) {
+		(void)obj;
 		return *this;
 	}
 
